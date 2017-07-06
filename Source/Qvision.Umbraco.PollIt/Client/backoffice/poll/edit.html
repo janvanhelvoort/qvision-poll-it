@@ -10,30 +10,34 @@
             <umb-editor-container>
                 <umb-tabs-content class="form-horizontal" view="true">
                     <umb-tab id="tab1" rel="1">
-                        <umb-control-group label="Add Answers" description="Add and remove answers from the list">
+                        <umb-control-group label="@pollIt_addAnswer" description="@pollIt_addAnswerDescription">
                             <div ng-if="!page.create">
                                 <div class="control-group">
                                     <input name="newItem" type="text" ng-model="content.answer.value" val-highlight="{{content.answer.hasError}}" />
-                                    <button class="btn" ng-click="addAnswer($event)" ng-disabled="content.answers.length > 6">Add</button>
+                                    <button class="btn" ng-click="addAnswer($event)" ng-disabled="content.answers.length > 6">
+                                        <localize key="general_add">Add</localize>
+                                    </button>
                                 </div>
                                 <div ui-sortable="sortableOptions" ng-model="content.answers">
                                     <div class="control-group" ng-repeat="answer in content.answers">
                                         <i class="icon icon-navigation handle"></i>
                                         <input type="text" ng-model="answer.value" required on-blur="updateAnswer(answer, $event)" />
-                                        <button class="btn btn-danger" ng-click="removeAnswer(answer, $event)">Remove</button>
+                                        <button class="btn btn-danger" ng-click="removeAnswer(answer, $event)">
+                                            <localize key="general_delete">Remove</localize>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <div ng-if="page.create">
-                                <span>Save the question in order to add answers.</span>
+                                <localize key="pollIt_saveQuestionAddAnswer">Save the question in order to add answers</localize>                                
                             </div>
                         </umb-control-group>
 
-                        <umb-control-group class="umb-datepicker" label="Start date" description="Poll is visible from (optional)">
+                        <umb-control-group class="umb-datepicker" label="@pollIt_startDate" description="@pollIt_startDateDescription">
                             <umb-editor model="startDatePicker"></umb-editor>
                         </umb-control-group>
 
-                        <umb-control-group class="umb-datepicker" label="End date" description="The poll will be closed and the result page will be shown from (optional)">
+                        <umb-control-group class="umb-datepicker" label="@pollIt_endDate" description="@pollIt_endDateDescription">
                             <umb-editor model="endDatePicker"></umb-editor>
                         </umb-control-group>
                     </umb-tab>
@@ -43,8 +47,8 @@
                                 <thead>
                                     <tr>
                                         <td style="width:45px"></td>
-                                        <td>Answer</td>
-                                        <td>Responses</td>
+                                        <td><localize key="pollIt_answers">Answers</localize></td>
+                                        <td><localize key="pollIt_responses">Responses</localize></td>
                                     </tr>
                                 </thead>
                                 <tbody>

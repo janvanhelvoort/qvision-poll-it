@@ -1,5 +1,5 @@
-﻿function EditController($scope, $routeParams, $filter, $location, navigationService, editorState, formHelper, pollItResource) {
-    $scope.page = { loading: false, create: true, tabs: [{ id: 1, label: "Content" }, { id: 2, label: "Responses" }] };
+﻿function EditController($scope, $routeParams, $filter, $location, navigationService, editorState, formHelper, localizationService, pollItResource) {
+    $scope.page = { loading: false, create: true, tabs: [{ id: 1, label: localizationService.localize("pollIt_tabContent") }, { id: 2, label: localizationService.localize("pollIt_tabResponses") }] };
     $scope.content = { question: {}, answers: [], answer: { value: '', hasError: false }, responses: [] };
     $scope.config = {
         datePicker: {

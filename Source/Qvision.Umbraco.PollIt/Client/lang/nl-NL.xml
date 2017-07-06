@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<language alias="nl" intName="Dutch" localName="Nederlands" lcid="" culture="nl-NL">
+  <area alias="sections">
+    <key alias="pollIt">Poll It</key>
+  </area>
+  <area alias="pollIt">
+    <key alias="tabContent">Inhoud</key>
+    <key alias="tabResponses">Reacties</key>
+    <key alias="answers">Antwoorden</key>
+    <key alias="responses">Reacties</key>
+    <key alias="saveQuestionAddAnswer">Sla de vraag op om antwoorden toe te voegen.</key>
+    <key alias="addAnswer">Antwoord toevoegen</key>
+    <key alias="addAnswerDescription">Voeg en verwijder antwoorden uit de lijst</key>
+    <key alias="startDate">Begin datum</key>
+    <key alias="startDateDescription">Poll is zichtbaar vanaf (optioneel)</key>
+    <key alias="endDate">Eind datum</key>
+    <key alias="endDateDescription">De poll wordt afgesloten en de resultatenpagina wordt getoond van (optioneel)</key>
+  </area>
+</language>
