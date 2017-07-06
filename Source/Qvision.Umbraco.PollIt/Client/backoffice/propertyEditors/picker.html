@@ -1,0 +1,16 @@
+﻿<div ng-controller="PollIt.PickerController">
+
+    <umb-load-indicator ng-if="isLoading" />
+
+    <umb-node-preview ng-if="content.selectedPoll.name" name="content.selectedPoll.name" icon="icon-poll" allow-remove="true" on-remove="remove()"/>
+    
+    <a ng-if="!content.selectedPoll.name" class="umb-node-preview-add" href ng-click="openPollPicker()" prevent-default>
+        <localize key="general_add">Add</localize>
+    </a>
+
+    <div ng-if="content.error" class="alert alert-warning">
+        {{ content.error }}
+    </div>
+
+    <umb-overlay ng-if="content.pollPickerOverlay.show" model="content.pollPickerOverlay" view="content.pollPickerOverlay.view" position="right"/>    
+</div>

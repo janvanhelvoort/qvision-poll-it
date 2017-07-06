@@ -1,0 +1,80 @@
+﻿<div ng-controller="PollIt.EditController">
+
+    <umb-load-indicator ng-if="page.loading"></umb-load-indicator>
+
+    <form name="contentForm" ng-submit="save()" novalidate val-form-manager>
+        <umb-editor-view ng-if="!page.loading" umb-tabs>
+
+            <umb-editor-header name="content.question.name" hide-icon="true" hide-description="true" hide-alias="true" tabs="page.tabs" />
+
+            <umb-editor-container>
+                <umb-tabs-content class="form-horizontal" view="true">
+                    <umb-tab id="tab1" rel="1">
+                        <umb-control-group label="Add Answers" description="Add and remove answers from the list">
+                            <div ng-if="!page.create">
+                                <div class="control-group">
+                                    <input name="newItem" type="text" ng-model="content.answer.value" val-highlight="{{content.answer.hasError}}" />
+                                    <button class="btn" ng-click="addAnswer($event)" ng-disabled="content.answers.length > 6">Add</button>
+                                </div>
+                                <div ui-sortable="sortableOptions" ng-model="content.answers">
+                                    <div class="control-group" ng-repeat="answer in content.answers">
+                                        <i class="icon icon-navigation handle"></i>
+                                        <input type="text" ng-model="answer.value" required on-blur="updateAnswer(answer, $event)" />
+                                        <button class="btn btn-danger" ng-click="removeAnswer(answer, $event)">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="page.create">
+                                <span>Save the question in order to add answers.</span>
+                            </div>
+                        </umb-control-group>
+
+                        <umb-control-group class="umb-datepicker" label="Start date" description="Poll is visible from (optional)">
+                            <umb-editor model="startDatePicker"></umb-editor>
+                        </umb-control-group>
+
+                        <umb-control-group class="umb-datepicker" label="End date" description="The poll will be closed and the result page will be shown from (optional)">
+                            <umb-editor model="endDatePicker"></umb-editor>
+                        </umb-control-group>
+                    </umb-tab>
+                    <umb-tab id="tab2" rel="2">
+                        <div class="umb-listview" ng-if="content.answers.length > 0">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <td style="width:45px"></td>
+                                        <td>Answer</td>
+                                        <td>Responses</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="answer in content.answers">
+                                        <td>
+                                            {{getResponsesPercentage(answer.id)}}%
+                                        </td>
+                                        <td>
+                                            {{answer.value}}
+                                        </td>
+                                        <td>
+                                            {{getResponses(answer.id)}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <umb-empty-state ng-if="content.answers.length === 0" position="center">
+                            <p>Create answers</p>
+                        </umb-empty-state>
+                    </umb-tab>
+                </umb-tabs-content>
+            </umb-editor-container>
+
+            <umb-editor-footer>
+                <umb-editor-footer-content-right>
+                    <umb-button type="submit" button-style="success" state="page.saveButtonState" shortcut="ctrl+s" label="Save" label-key="buttons_save" />
+                </umb-editor-footer-content-right>
+            </umb-editor-footer>
+        </umb-editor-view>
+    </form>
+</div>

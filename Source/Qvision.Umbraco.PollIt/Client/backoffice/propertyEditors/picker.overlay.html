@@ -1,0 +1,34 @@
+﻿<div ng-controller="PollIt.PickerOverlayController">
+
+    <umb-load-indicator ng-if="isLoading"/>
+
+    <!-- FILTER -->
+    <div class="umb-control-group -no-border">
+        <div class="form-search">
+            <i class="icon-search"></i>
+            <input type="text"
+                   class="-full-width-input"
+                   ng-model="content.filterTerm"
+                   class="umb-search-field search-query search-input input-block-level"
+                   localize="placeholder"
+                   placeholder="@placeholders_filter"
+                   umb-auto-focus>
+        </div>
+    </div>
+
+    <ul class="umb-actions umb-actions-child">
+        <li ng-repeat="question in content.questions | orderBy:'name' | filter:content.filterTerm" ng-click="pickPoll(question)">
+            <a href title="{{ question.name }}">
+                <i ng-if="!question.selected" class="icon-poll" style="display: inline-block;"></i>
+                <i ng-if="question.selected" class="icon-check color-green" style="font-size: 22px; display: inline-block;"></i>
+                <span class="menu-label">
+                    {{question.name}}                    
+                </span>
+            </a>
+        </li>
+    </ul>
+
+    <div ng-if="content.error" class="alert alert-warning">
+        {{ content.error }}
+    </div>
+</div>

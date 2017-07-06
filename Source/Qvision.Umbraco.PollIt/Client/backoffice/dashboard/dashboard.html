@@ -1,0 +1,38 @@
+﻿<div ng-controller="PollIt.DashboardController">
+    <umb-load-indicator ng-if="page.loading"></umb-load-indicator>
+
+    <div class="row-fluid" ng-if="!page.loading">
+        <ul class="thumbnails">
+            <li class="span4" ng-repeat="question in content.questions">
+                <div style="margin-right: 20px; padding: 20px;">
+                    <a href ng-click="navigate(question.id)" title="{{question.name}}">
+                        <span style="font-weight: bold;">{{question.name}}</span>
+                        <div class="umb-listview" ng-if="question.answers.length > 0">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr ng-repeat="answer in question.answers | orderBy:'index'">
+                                        <td style="width:45px">
+                                            {{getResponsesPercentage(question, answer.id)}}%
+                                        </td>
+                                        <td>
+                                            {{answer.value}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>                       
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <umb-empty-state ng-if="content.questions.length === 0" position="center">
+        <p>Please, create some questions</p>
+            
+        <umb-button type="button"
+                    label="Create question"                        
+                    action="navigate('-1')">
+        </umb-button>
+    </umb-empty-state>
+</div>
