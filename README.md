@@ -5,6 +5,7 @@ Umbraco package that let's create and manage polls
 
 |NuGet Packages    |Version           |
 |:-----------------|:-----------------|
+|**Release**|[![NuGet download](http://img.shields.io/nuget/v/Qvision.PollIt.svg)](https://www.nuget.org/packages/Qvision.PollIt/)
 |**Pre-release**|[![MyGet Pre Release](https://img.shields.io/myget/janvanhelvoort/vpre/Qvision.PollIt.svg)](https://www.myget.org/feed/janvanhelvoort/package/nuget/Qvision.PollIt)
 
 |Umbraco Packages  |                  |
