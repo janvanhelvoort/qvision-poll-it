@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<dashBoard xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">  
+  <section alias="StartupPollItDashboardSection"
+            xdt:Locator="Match(alias)"
+            xdt:Transform="InsertIfMissing">
+			<areas>
+				  <area>pollIt</area>
+			</areas>
+			<tab caption="Get Started">
+				<control>
+					/app_plugins/pollIt/backoffice/dashboard/dashboard.html
+				</control>
+			</tab>
+	</section>
+</dashBoard>
