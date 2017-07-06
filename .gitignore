@@ -23,10 +23,12 @@
 packages/
 App_Data/
 
+# Website
+Qvision.Umbraco.PollIt/Qvision.Umbraco.PollIt.Website/
+
 # Packaging
 Source/.vs/config/applicationhost.config
 Packaging/NugetBuild/
 Packaging/Package/
 Packaging/UmbracoBuild/
 artifacts/
-
