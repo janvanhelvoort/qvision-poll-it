@@ -281,6 +281,7 @@
     <Compile Include="Controllers\ApiControllers\OverviewApiController.cs" />
     <Compile Include="Controllers\ApiControllers\QuestionApiController.cs" />
     <Compile Include="Controllers\TreeControllers\PollTreeController.cs" />
+    <Compile Include="Converters\PollItValueConverter.cs" />
     <Compile Include="Mapping\Profile\AnswerProfile.cs" />
     <Compile Include="Mapping\Profile\QuestionProfile.cs" />
     <Compile Include="Mapping\Profile\ResponseProfile.cs" />
