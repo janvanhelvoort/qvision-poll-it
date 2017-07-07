@@ -46,7 +46,7 @@ var question = PollItService.Current.GetQuestion(Model.content.poll)
          "Id":7,
          "Value":"6.2.6",
          "Index":1,
-		 "Percentage":11,
+	 "Percentage":11,
          "Responses":[
             {
                "Id":25,
@@ -58,7 +58,7 @@ var question = PollItService.Current.GetQuestion(Model.content.poll)
          "Id":8,
          "Value":"7.1.0",
          "Index":2,
-		 "Percentage":22,
+	 "Percentage":22,
          "Responses":[
             {
                "Id":22,
@@ -75,7 +75,7 @@ var question = PollItService.Current.GetQuestion(Model.content.poll)
 ### Service
 The service has 2 methods, one for getting the value and one for voting.
 
-#### Get the value
+#### GetQuestion
 ```csharp
 var question = PollItService.Current.GetQuestion(Model.content.poll)
 ```
