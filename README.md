@@ -2,7 +2,10 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/i0rklyg43egdmkyb?svg=true)](https://ci.appveyor.com/project/JanvanHelvoort/qvision-poll-it)
 [![NuGet release](http://img.shields.io/nuget/v/Qvision.PollIt.svg)](https://www.nuget.org/packages/Qvision.PollIt/)
-[![MyGet Pre Release](https://img.shields.io/myget/janvanhelvoort/vpre/Qvision.PollIt.svg)](https://www.myget.org/feed/janvanhelvoort/package/nuget/Qvision.PollIt)
+[![Our Umbraco project page](https://img.shields.io/badge/our-umbraco-orange.svg)](https://our.umbraco.org/projects/backoffice-extensions/qvision-poll-it/) 
+
+> *Pre-release:* [![MyGet Pre Release](https://img.shields.io/myget/janvanhelvoort/vpre/Qvision.PollIt.svg)](https://www.myget.org/feed/janvanhelvoort/package/nuget/Qvision.PollIt)
+
 
 Umbraco package that enables you to create and manage polls - [Gallery](Documentation/gallery.md)
 
