@@ -10,6 +10,8 @@
 
         public int Index { get; set; }
 
+        public double Percentage { get; set; }
+
         public IEnumerable<Response> Responses { get; set; }
     }
 }

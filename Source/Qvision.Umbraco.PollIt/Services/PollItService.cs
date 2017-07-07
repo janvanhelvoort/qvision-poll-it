@@ -6,10 +6,10 @@
 
     using AutoMapper;
 
-    using global::Umbraco.Core;    
+    using global::Umbraco.Core;
 
     using Qvision.Umbraco.PollIt.Constants;
-    using Qvision.Umbraco.PollIt.Models;    
+    using Qvision.Umbraco.PollIt.Models;
     using Qvision.Umbraco.PollIt.Models.Repositories;
 
     public class PollItService
@@ -28,8 +28,11 @@
                 question.Responses = responses.Count;
 
                 foreach (var answer in question.Answers)
-                {                    
-                    answer.Responses = Mapper.Map<IEnumerable<Response>>(responses.Where(item => item.AnswerId.Equals(answer.Id)));
+                {
+                    var answerResponses = Mapper.Map<IEnumerable<Response>>(responses.Where(item => item.AnswerId.Equals(answer.Id))).ToList();
+
+                    answer.Responses = answerResponses;
+                    answer.Percentage = answerResponses.Any() ? Math.Round((double)(answerResponses.Count) / responses.Count * 100) : 0;
                 }
 
                 return question;
@@ -43,7 +46,7 @@
             if (result != null)
             {
                 ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{questionId}");
-            }            
+            }
 
             return this.GetQuestion(questionId);
         }
