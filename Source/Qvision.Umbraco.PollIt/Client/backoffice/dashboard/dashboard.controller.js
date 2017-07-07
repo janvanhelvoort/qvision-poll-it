@@ -18,7 +18,7 @@
 
     $scope.getResponsesPercentage = function (question, id) {
         var amount = $filter('filter')(question.responses, { answerId: id }).length;
-        return amount > 0 ? amount / question.responses.length * 100 : 0;
+        return amount > 0 ? Math.round(amount / question.responses.length * 100) : 0;
     }
 
     $scope.getResponses = function (question, id) {
