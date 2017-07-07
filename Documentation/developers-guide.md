@@ -10,11 +10,11 @@
 
 ### Introduction
 
-**Qvision Poll-it** is an backoffice extension for umbraco, its at the functionality to umbraco for create, edit en delete polls inside a custom section. The polls can be picked inside the content with af custom propery editor wich is included.
+**Qvision Poll-it** is a backoffice extension for umbraco, it adds the functionality to umbraco to create, edit en delete polls inside a custom section. The polls can be selected using a content picker inside the content with a custom propery editor wich is included.
 
-The poll can be acced eather way strongly typed with a custom property value converter or with the service.
+The poll can be requested strongly typed with a custom property value converter or using the service.
 
-With the service, a vote can registered to the poll, therefore you need the `question id` and `answer id`.
+With the service, a vote can be registered to the poll, therefore you need the `question id` and `answer id`.
 
 ---
 
@@ -85,4 +85,4 @@ You receive the same model as the example above
 ```csharp
 var question = PollItService.Current.Vote(questionId, answerId);
 ```
-You receive the same model as if you call the `getQuestion` method
+You receive the same model as when you call the `getQuestion` method

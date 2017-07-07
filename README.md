@@ -4,29 +4,29 @@
 [![NuGet release](http://img.shields.io/nuget/v/Qvision.PollIt.svg)](https://www.nuget.org/packages/Qvision.PollIt/)
 [![MyGet Pre Release](https://img.shields.io/myget/janvanhelvoort/vpre/Qvision.PollIt.svg)](https://www.myget.org/feed/janvanhelvoort/package/nuget/Qvision.PollIt)
 
-Umbraco package that let's create and manage polls - [Gallery](Documentation/gallery.md)
+Umbraco package that enables you to create and manage polls - [Gallery](Documentation/gallery.md)
 
 ## Getting Started
 
 ### Installation
 
-> *Note:* This package has been developed against **Umbraco v7.6.0** and will support that version and above.
+> *Note:* This package has been developed for **Umbraco v7.6.0** and will support that version and above.
 
 #### NuGet package repository
 To [install from NuGet](https://www.nuget.org/packages/Qvision.PollIt), you can run the following command from within Visual Studio:
 
 	PM> Install-Package Qvision.PollIt
 
-There is also a [MyGet build](https://www.myget.org/feed/janvanhelvoort/package/nuget/Qvision.PollIt) - for bleeding-edge / development releases.
+There is also a [MyGet build](https://www.myget.org/feed/janvanhelvoort/package/nuget/Qvision.PollIt) - for development releases.
 
 #### After installation 
-There will be a new section, 'Poll It'. If you can't see this section, you need to add the premisions for the users. Whitin this section, you can create and manage polls. 
+There will be a new section, 'Poll It'. If you can't see this section, you need to add the permissions for the users. Whitin this section, you can create and manage polls.
 ![Dashboard](Documentation/Screenshots/Section%20Dashboard.png)
 
 ## Usage
 
 ### Creating your first poll
-Within the new section, if you click on the `...` after Polls, you can select the `create` option. Now you are getting a blank edit screen.
+Within the new section, if you click on the `...` next to Polls, you can select the `create` option. This will result in a blank edit screen.
 ![Create](Documentation/Screenshots/Question%20Edit.png)
 
 ### Propery editor

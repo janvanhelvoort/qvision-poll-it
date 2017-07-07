@@ -10,7 +10,7 @@
 *Responses - See the responses*
 
 ![Delete](Screenshots/Qustion%20Delete.png)
-*Delete - Remove of a question, this will also delete the answers and responses*
+*Delete - Remove a question, this will also delete the answers and responses*
 
 ## Property Editor
 ![Custom Property](Screenshots/Custom%20Property.png)
