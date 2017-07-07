@@ -6,13 +6,18 @@
     public class ApplicationConstants
     {
         /// <summary>
-        /// The section alias.
+        /// Section alias.
         /// </summary>
         public const string SectionAlias = "pollIt";
 
         /// <summary>
-        /// The section icon.
+        /// Section icon.
         /// </summary>
         public const string SectionIcon = "icon-poll";
+
+        /// <summary>
+        /// Property editor alias.
+        /// </summary>
+        public const string PropertyEditorAlias = "Qvision.PollIt";
     }
 }

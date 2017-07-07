@@ -1,15 +1,4 @@
 ﻿{
-	propertyEditors: [
-        {
-            alias: "Qvision.PollIt",
-            name: "Poll It Picker",
-			icon: "icon-autofill",
-			group: "Pickers",
-            editor: {
-                view: "~/App_Plugins/pollit/backoffice/propertyEditors/picker.html"
-            }
-        }
-    ],
 	javascript: [
 		'~/App_Plugins/pollit/backoffice/poll/delete.controller.js',
 		'~/App_Plugins/pollit/backoffice/poll/edit.controller.js',

@@ -294,6 +294,7 @@
     <Compile Include="Models\Repositories\ResponseRepository.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Properties\VersionInfo.cs" />
+    <Compile Include="PropertyEditors\PropertyEditors.cs" />
     <Compile Include="Services\PollItService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
