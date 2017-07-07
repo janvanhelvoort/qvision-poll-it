@@ -9,13 +9,13 @@
 
         public string Name { get; set; }
 
+        public int Responses { get; set; }
+
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
 
-        public DateTime CreatedDate { get; set; }
-
-        public int Responses { get; set; }
+        public DateTime CreatedDate { get; set; }       
 
         public IEnumerable<Answer> Answers { get; set; }        
     }
