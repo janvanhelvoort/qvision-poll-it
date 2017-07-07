@@ -15,7 +15,7 @@ Umbraco package that let's create and manage polls - [Gallery](Documentation/gal
 #### NuGet package repository
 To [install from NuGet](https://www.nuget.org/packages/Qvision.PollIt), you can run the following command from within Visual Studio:
 
-		PM> Install-Package Qvision.PollIt
+	PM> Install-Package Qvision.PollIt
 
 There is also a [MyGet build](https://www.myget.org/feed/janvanhelvoort/package/nuget/Qvision.PollIt) - for bleeding-edge / development releases.
 
