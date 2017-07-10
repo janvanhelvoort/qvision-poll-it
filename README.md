@@ -11,6 +11,8 @@ Umbraco package that enables you to create and manage polls - [Gallery](Document
 
 ## Getting Started
 
+This package includes dutch and english translations. A translation can easily be added with xml files. [Languages](Source/Qvision.Umbraco.PollIt/Client/lang/)
+
 ### Installation
 
 > *Note:* This package has been developed for **Umbraco v7.6.0** and will support that version and above.

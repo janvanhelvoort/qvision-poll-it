@@ -31,7 +31,7 @@
 		<PackageId>Qvision.PollIt</PackageId>		
 		<Copyright>Copyright &#169; Jan van Helvoort and contributors.</Copyright>
 		<Owners>Jan van Helvoort</Owners>
-		<Description>Umbraco package that let's create and manage polls</Description>
+		<Description>Umbraco package that enables you to create and manage polls.</Description>
 		<IconUrl>https://raw.githubusercontent.com/janvanhelvoort/qvision-poll-it/develop/Poll.png</IconUrl>
 		<Tags>umbraco</Tags>
 		<Language>en-GB</Language>
