@@ -12,6 +12,7 @@
     using global::Umbraco.Core;
     using global::Umbraco.Core.Logging;
     using global::Umbraco.Core.Persistence;
+    using global::Umbraco.Core.Persistence.Migrations;
     using global::Umbraco.Web;
     using global::Umbraco.Web.UI.JavaScript;
 
@@ -20,6 +21,8 @@
     using Qvision.Umbraco.PollIt.Controllers.ApiControllers;
     using Qvision.Umbraco.PollIt.Mapping.Profile;
     using Qvision.Umbraco.PollIt.Models.Pocos;
+
+    using Semver;
 
     public class Startup : ApplicationEventHandler
     {
@@ -37,7 +40,7 @@
             using (ApplicationContext.Current.ProfilingLogger.TraceDuration<Startup>("Begin ApplicationStarted", "End ApplicationStarted"))
             {
                 this.SetupSections(applicationContext);
-                this.SetupDatabase(applicationContext);
+                this.SetupMigration();
 
                 // Add mapping
                 Mapper.AddProfile<QuestionProfile>();
@@ -77,28 +80,38 @@
         /// <param name="applicationContext">
         /// The application Context.
         /// </param>
-        private void SetupDatabase(ApplicationContext applicationContext)
-        {
-            var databaseContext = applicationContext.DatabaseContext;
-            var databaseSchema = new DatabaseSchemaHelper(databaseContext.Database, applicationContext.ProfilingLogger.Logger, databaseContext.SqlSyntax);
+        private void SetupMigration()
+        {            
+            var currentVersion = new SemVersion(0, 0, 0);
 
-            if (!databaseSchema.TableExist(TableConstants.Questions.TableName))
+            var migrations = ApplicationContext.Current.Services.MigrationEntryService.GetAll(ApplicationConstants.ProductName);
+            
+            var latestMigration = migrations.OrderByDescending(x => x.Version).FirstOrDefault();
+
+            if (latestMigration != null)
             {
-                LogHelper.Info<Startup>("Setting up questions Table");
-                databaseSchema.CreateTable<Question>(false);
+                currentVersion = latestMigration.Version;
             }
 
-            if (!databaseSchema.TableExist(TableConstants.Answers.TableName))
+            var targetVersion = new SemVersion(0, 5, 0);
+            if (targetVersion != currentVersion)
             {
-                LogHelper.Info<Startup>("Setting up answers Table");
-                databaseSchema.CreateTable<Answer>(false);
-            }
+                var migrationsRunner = new MigrationRunner(
+                    ApplicationContext.Current.Services.MigrationEntryService,
+                    ApplicationContext.Current.ProfilingLogger.Logger,
+                    currentVersion,
+                    targetVersion,
+                    ApplicationConstants.ProductName);
 
-            if (!databaseSchema.TableExist(TableConstants.Responses.TableName))
-            {
-                LogHelper.Info<Startup>("Setting up responses Table");
-                databaseSchema.CreateTable<Response>(false);
-            }           
+                try
+                {
+                    migrationsRunner.Execute(UmbracoContext.Current.Application.DatabaseContext.Database);
+                }
+                catch (Exception e)
+                {
+                    LogHelper.Error<Startup>("Error running Statistics migration", e);
+                }
+            }
         }
 
         /// <summary>
