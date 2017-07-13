@@ -25,7 +25,7 @@
                 this.Request.CreateResponse(HttpStatusCode.OK, answer);
             }
 
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Answer can't save");
+            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't save answer");
         }
 
         [HttpPost]
@@ -62,7 +62,7 @@
                 }
             }
 
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Answer can't delete");
+            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't delete answer");
         }
     }
 }

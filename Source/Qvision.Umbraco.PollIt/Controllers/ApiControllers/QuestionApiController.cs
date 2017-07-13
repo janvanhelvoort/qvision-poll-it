@@ -40,7 +40,7 @@
                 return this.Request.CreateResponse(HttpStatusCode.OK, result);
             }
             
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Question can't save");
+            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't save question");
         }
 
         [HttpDelete]
@@ -55,7 +55,7 @@
                 {
                     if (!ResponseRepository.Current.Delete(response.Id))
                     {
-                        return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Question can't delete, Error removing of the responses");
+                        return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't delete question, Error removing the responses");
                     }
                 }
 
@@ -63,7 +63,7 @@
                 {
                     if (!AnswerRepository.Current.Delete(answer.Id))
                     {
-                        return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Question can't delete, Error removing of the answers");
+                        return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't delete question, Error removing the answers");
                     }
                 }
 
@@ -77,7 +77,7 @@
                 }
             }
 
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Question can't delete");
+            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't delete question");
         }
 
         [HttpGet]
@@ -98,7 +98,7 @@
                 return this.Request.CreateResponse(HttpStatusCode.OK, result);
             }
 
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't add answer");
+            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't add answer to question");
         }
 
         [HttpGet]
