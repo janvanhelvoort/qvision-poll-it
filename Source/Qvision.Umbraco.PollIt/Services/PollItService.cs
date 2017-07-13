@@ -8,6 +8,7 @@
 
     using global::Umbraco.Core;
 
+    using Qvision.Umbraco.PollIt.CacheRefresher;
     using Qvision.Umbraco.PollIt.Constants;
     using Qvision.Umbraco.PollIt.Models;
     using Qvision.Umbraco.PollIt.Models.Repositories;
@@ -45,7 +46,7 @@
 
             if (result != null)
             {
-                ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{questionId}");
+                PollItCacheRefresher.ClearCache(questionId);                
             }
 
             return this.GetQuestion(questionId);

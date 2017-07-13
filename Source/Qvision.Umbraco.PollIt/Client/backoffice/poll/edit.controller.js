@@ -17,7 +17,7 @@
             }
         }
     }
-    
+
     $scope.startDatePicker = { view: 'datepicker', value: null, config: $.extend({}, $scope.config.datePicker) };
     $scope.endDatePicker = { view: 'datepicker', value: null, config: $.extend({}, $scope.config.datePicker) };
 
@@ -34,7 +34,7 @@
             //set a shared state
             editorState.set($scope.content.question);
 
-            $scope.page.isLoading = false;            
+            $scope.page.isLoading = false;
         });;
 
         pollItResource.getQuestionAnswersById($routeParams.id).then(function (result) {
@@ -86,7 +86,7 @@
                 if ($scope.page.create) {
                     $scope.page.create = false;
                     $location.url("/pollIt/poll/edit/" + $scope.content.question.id);
-                }                
+                }
             }, function () {
                 $scope.page.saveButtonState = "error";
             });;
@@ -100,7 +100,7 @@
         items: '> div.control-group',
         tolerance: 'pointer',
         stop: function () {
-            pollItResource.updateSort($scope.content.answers.map(function (answer) { return answer.id }));
+            pollItResource.updateSort($scope.content.answers.map(function (answer) { return answer.id }), $scope.content.question.id);
         }
     };
 
@@ -108,8 +108,8 @@
         event.preventDefault();
 
         if ($scope.content.answer.value) {
-            if (!_.contains($scope.content.answers.value, $scope.content.answer.value)) {
-                var answer = { value: $scope.content.answer.value, index: $scope.content.answers.length + 1 };
+            if (!_.find($scope.content.answers, function (item) { return item.value === $scope.content.answer.value })) {
+                var answer = { value: $scope.content.answer.value, index: $scope.content.answers.length };
 
                 pollItResource.postQuestionAnswer($routeParams.id, answer).then(function (result) {
                     $scope.content.answers.push(result.data);
@@ -119,7 +119,7 @@
             }
         }
 
-        $scope.content.answer = { hasError: false };
+        $scope.content.answer = { hasError: true };
     };
 
     $scope.updateAnswer = function (answer, event) {
@@ -131,7 +131,7 @@
     $scope.removeAnswer = function (answer, event) {
         event.preventDefault();
 
-        pollItResource.deleteAnswer(answer.id).then(function () {
+        pollItResource.deleteAnswer(answer.id, $routeParams.id).then(function () {
             $scope.content.answers = _.reject($scope.content.answers, function (x) {
                 return x.id === answer.id;
             });

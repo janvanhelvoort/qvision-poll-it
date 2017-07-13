@@ -1,17 +1,15 @@
 ﻿namespace Qvision.Umbraco.PollIt.Controllers.ApiControllers
-{
-    using System.Linq;
+{    
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
-
-    using global::Umbraco.Core;
     using global::Umbraco.Web.Editors;
 
     using Qvision.Umbraco.PollIt.Attributes;
-    using Qvision.Umbraco.PollIt.Constants;
     using Qvision.Umbraco.PollIt.Models.Pocos;
     using Qvision.Umbraco.PollIt.Models.Repositories;
+    using Qvision.Umbraco.PollIt.CacheRefresher;
+    
 
     [CamelCase]
     public class AnswerApiController : UmbracoAuthorizedJsonController
@@ -23,18 +21,16 @@
 
             if (result != null)
             {
-                ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{answer.QuestionId}");
+                PollItCacheRefresher.ClearCache(answer.QuestionId);
                 this.Request.CreateResponse(HttpStatusCode.OK, answer);
             }
 
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Answer can't save");
+            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't save answer");
         }
 
         [HttpPost]
-        public HttpResponseMessage UpdateSort(int[] ids)
+        public HttpResponseMessage UpdateSort(int[] ids, int questionId)
         {
-            var answer = AnswerRepository.Current.GetById(ids.FirstOrDefault());
-
             if (ids != null && ids.Length > 0)
             {
                 for (var i = 0; i < ids.Length; ++i)
@@ -43,28 +39,26 @@
                 }
             }
 
-            ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{answer.QuestionId}");
+            PollItCacheRefresher.ClearCache(questionId);
 
             return this.Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [HttpDelete]
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage Delete(int id, int questionId)
         {
-            var answer = AnswerRepository.Current.GetById(id);
-
             using (var transaction = this.ApplicationContext.DatabaseContext.Database.GetTransaction())
             {
                 if (ResponseRepository.Current.DeleteByAnswerId(id) && AnswerRepository.Current.Delete(id))
                 {
                     transaction.Complete();
-                    ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{answer.QuestionId}");
+                    PollItCacheRefresher.ClearCache(questionId);                    
 
                     return this.Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
 
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Answer can't delete");
+            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't delete answer");
         }
     }
 }

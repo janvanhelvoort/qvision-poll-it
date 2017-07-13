@@ -6,6 +6,11 @@
     public class ApplicationConstants
     {
         /// <summary>
+        /// Product name.
+        /// </summary>
+        public const string ProductName = "PollIt";
+
+        /// <summary>
         /// Section alias.
         /// </summary>
         public const string SectionAlias = "pollIt";

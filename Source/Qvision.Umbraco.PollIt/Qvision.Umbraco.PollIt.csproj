@@ -273,7 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\CamelCaseAttribute.cs" />
+    <Compile Include="CacheRefresher\PollItCacheRefresher.cs" />
     <Compile Include="Constants\ApplicationConstants.cs" />
+    <Compile Include="Constants\CacheRefresherConstants.cs" />
     <Compile Include="Constants\RuntimeCacheConstants.cs" />
     <Compile Include="Constants\TableConstants.cs" />
     <Compile Include="Constants\TreeConstants.cs" />
@@ -285,6 +287,7 @@
     <Compile Include="Mapping\Profile\AnswerProfile.cs" />
     <Compile Include="Mapping\Profile\QuestionProfile.cs" />
     <Compile Include="Mapping\Profile\ResponseProfile.cs" />
+    <Compile Include="Migrations\InitialMigration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Pocos\Answer.cs" />
     <Compile Include="Models\Pocos\Response.cs" />
@@ -295,7 +298,6 @@
     <Compile Include="Models\Repositories\ResponseRepository.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Properties\VersionInfo.cs" />
-    <Compile Include="PropertyEditors\PropertyEditors.cs" />
     <Compile Include="Services\PollItService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -319,6 +321,9 @@
     <Content Include="Client\backoffice\propertyEditors\picker.overlay.html" />
     <Content Include="Client\lang\en-US.xml" />
     <Content Include="Client\lang\nl-NL.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\Upgrade\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />

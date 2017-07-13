@@ -10,16 +10,18 @@
     using AutoMapper;
 
     using global::Umbraco.Core;
+    using global::Umbraco.Core.Cache;
     using global::Umbraco.Core.Logging;
-    using global::Umbraco.Core.Persistence;
+    using global::Umbraco.Core.Persistence.Migrations;
     using global::Umbraco.Web;
     using global::Umbraco.Web.UI.JavaScript;
 
-
+    using Qvision.Umbraco.PollIt.CacheRefresher;
     using Qvision.Umbraco.PollIt.Constants;
     using Qvision.Umbraco.PollIt.Controllers.ApiControllers;
     using Qvision.Umbraco.PollIt.Mapping.Profile;
-    using Qvision.Umbraco.PollIt.Models.Pocos;
+
+    using Semver;
 
     public class Startup : ApplicationEventHandler
     {
@@ -37,7 +39,9 @@
             using (ApplicationContext.Current.ProfilingLogger.TraceDuration<Startup>("Begin ApplicationStarted", "End ApplicationStarted"))
             {
                 this.SetupSections(applicationContext);
-                this.SetupDatabase(applicationContext);
+                this.SetupMigration();
+
+                CacheRefresherBase<PollItCacheRefresher>.CacheUpdated += this.CacheUpdated;
 
                 // Add mapping
                 Mapper.AddProfile<QuestionProfile>();
@@ -74,31 +78,38 @@
         /// <summary>
         /// Setup database.
         /// </summary>
-        /// <param name="applicationContext">
-        /// The application Context.
-        /// </param>
-        private void SetupDatabase(ApplicationContext applicationContext)
+        private void SetupMigration()
+        {            
+            var migrations = ApplicationContext.Current.Services.MigrationEntryService.GetAll(ApplicationConstants.ProductName);            
+            var latestMigration = migrations.OrderByDescending(x => x.Version).FirstOrDefault();
+
+            var currentVersion = latestMigration != null ? latestMigration.Version : new SemVersion(0, 0, 0);
+
+            var targetVersion = new SemVersion(0, 5, 1);
+            if (targetVersion != currentVersion)
+            {
+                var migrationsRunner = new MigrationRunner(
+                    ApplicationContext.Current.Services.MigrationEntryService,
+                    ApplicationContext.Current.ProfilingLogger.Logger,
+                    currentVersion,
+                    targetVersion,
+                    ApplicationConstants.ProductName);
+
+                try
+                {
+                    migrationsRunner.Execute(UmbracoContext.Current.Application.DatabaseContext.Database);
+                }
+                catch (Exception e)
+                {
+                    LogHelper.Error<Startup>("Error running Statistics migration", e);
+                }
+            }
+        }
+
+        private void CacheUpdated(PollItCacheRefresher sender, CacheRefresherEventArgs e)
         {
-            var databaseContext = applicationContext.DatabaseContext;
-            var databaseSchema = new DatabaseSchemaHelper(databaseContext.Database, applicationContext.ProfilingLogger.Logger, databaseContext.SqlSyntax);
-
-            if (!databaseSchema.TableExist(TableConstants.Questions.TableName))
-            {
-                LogHelper.Info<Startup>("Setting up questions Table");
-                databaseSchema.CreateTable<Question>(false);
-            }
-
-            if (!databaseSchema.TableExist(TableConstants.Answers.TableName))
-            {
-                LogHelper.Info<Startup>("Setting up answers Table");
-                databaseSchema.CreateTable<Answer>(false);
-            }
-
-            if (!databaseSchema.TableExist(TableConstants.Responses.TableName))
-            {
-                LogHelper.Info<Startup>("Setting up responses Table");
-                databaseSchema.CreateTable<Response>(false);
-            }           
+            // clear Poll-it cache, this will executed on all servers
+            ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{e.MessageObject}");
         }
 
         /// <summary>

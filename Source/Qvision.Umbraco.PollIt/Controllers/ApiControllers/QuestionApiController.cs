@@ -4,11 +4,10 @@
     using System.Net.Http;
     using System.Web.Http;
 
-    using global::Umbraco.Core;
     using global::Umbraco.Web.Editors;
 
     using Qvision.Umbraco.PollIt.Attributes;
-    using Qvision.Umbraco.PollIt.Constants;
+    using Qvision.Umbraco.PollIt.CacheRefresher;
     using Qvision.Umbraco.PollIt.Models.Pocos;
     using Qvision.Umbraco.PollIt.Models.Repositories;
 
@@ -36,11 +35,12 @@
 
             if (result != null)
             {
-                ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{result.Id}");
+                PollItCacheRefresher.ClearCache(result.Id);
+                
                 return this.Request.CreateResponse(HttpStatusCode.OK, result);
             }
             
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Question can't save");
+            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't save question");
         }
 
         [HttpDelete]
@@ -55,7 +55,7 @@
                 {
                     if (!ResponseRepository.Current.Delete(response.Id))
                     {
-                        return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Question can't delete, Error removing of the responses");
+                        return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't delete question, Error removing the responses");
                     }
                 }
 
@@ -63,7 +63,7 @@
                 {
                     if (!AnswerRepository.Current.Delete(answer.Id))
                     {
-                        return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Question can't delete, Error removing of the answers");
+                        return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't delete question, Error removing the answers");
                     }
                 }
 
@@ -71,13 +71,13 @@
                 {
                     transaction.Complete();
 
-                    ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{id}");
+                    PollItCacheRefresher.ClearCache(id);
 
                     return this.Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
 
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Question can't delete");
+            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't delete question");
         }
 
         [HttpGet]
@@ -93,11 +93,12 @@
 
             if (result != null)
             {
-                ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{id}");
+                PollItCacheRefresher.ClearCache(id);
+
                 return this.Request.CreateResponse(HttpStatusCode.OK, result);
             }
 
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't add answer");
+            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't add answer to question");
         }
 
         [HttpGet]
