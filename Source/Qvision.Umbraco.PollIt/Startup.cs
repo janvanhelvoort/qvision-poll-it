@@ -10,17 +10,16 @@
     using AutoMapper;
 
     using global::Umbraco.Core;
+    using global::Umbraco.Core.Cache;
     using global::Umbraco.Core.Logging;
-    using global::Umbraco.Core.Persistence;
     using global::Umbraco.Core.Persistence.Migrations;
     using global::Umbraco.Web;
     using global::Umbraco.Web.UI.JavaScript;
 
-
+    using Qvision.Umbraco.PollIt.CacheRefresher;
     using Qvision.Umbraco.PollIt.Constants;
     using Qvision.Umbraco.PollIt.Controllers.ApiControllers;
     using Qvision.Umbraco.PollIt.Mapping.Profile;
-    using Qvision.Umbraco.PollIt.Models.Pocos;
 
     using Semver;
 
@@ -41,6 +40,8 @@
             {
                 this.SetupSections(applicationContext);
                 this.SetupMigration();
+
+                CacheRefresherBase<PollItCacheRefresher>.CacheUpdated += this.CacheUpdated;
 
                 // Add mapping
                 Mapper.AddProfile<QuestionProfile>();
@@ -103,6 +104,12 @@
                     LogHelper.Error<Startup>("Error running Statistics migration", e);
                 }
             }
+        }
+
+        private void CacheUpdated(PollItCacheRefresher sender, CacheRefresherEventArgs e)
+        {
+            // clear Poll-it cache, this will executed on all servers
+            ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{e.MessageObject}");
         }
 
         /// <summary>
