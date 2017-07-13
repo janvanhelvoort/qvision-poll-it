@@ -32,11 +32,11 @@
         saveAnswer: function (answer) {
             return $http.post(Umbraco.Sys.ServerVariables.pollIt.saveAnswer, answer);
         },
-        updateSort: function (ids) {
-            return $http.post(Umbraco.Sys.ServerVariables.pollIt.updateSort, ids);
+        updateSort: function (ids, questionId) {
+            return $http.post(Umbraco.Sys.ServerVariables.pollIt.updateSort + "?questionId=" + questionId, ids);
         },
-        deleteAnswer: function (id) {
-            return $http.delete(Umbraco.Sys.ServerVariables.pollIt.deleteAnswer + "?id=" + id);
+        deleteAnswer: function (id, questionId) {
+            return $http.delete(Umbraco.Sys.ServerVariables.pollIt.deleteAnswer + "?id=" + id + "&questionId=" + questionId);
         }
     };
 };

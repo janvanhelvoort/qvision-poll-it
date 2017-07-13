@@ -29,10 +29,8 @@
         }
 
         [HttpPost]
-        public HttpResponseMessage UpdateSort(int[] ids)
+        public HttpResponseMessage UpdateSort(int[] ids, int questionId)
         {
-            var answer = AnswerRepository.Current.GetById(ids.FirstOrDefault());
-
             if (ids != null && ids.Length > 0)
             {
                 for (var i = 0; i < ids.Length; ++i)
@@ -41,22 +39,20 @@
                 }
             }
 
-            PollItCacheRefresher.ClearCache(answer.questionId);
+            PollItCacheRefresher.ClearCache(questionId);
 
             return this.Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [HttpDelete]
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage Delete(int id, int questionId)
         {
-            var answer = AnswerRepository.Current.GetById(id);
-
             using (var transaction = this.ApplicationContext.DatabaseContext.Database.GetTransaction())
             {
                 if (ResponseRepository.Current.DeleteByAnswerId(id) && AnswerRepository.Current.Delete(id))
                 {
                     transaction.Complete();
-                    PollItCacheRefresher.ClearCache(answer.questionId);                    
+                    PollItCacheRefresher.ClearCache(questionId);                    
 
                     return this.Request.CreateResponse(HttpStatusCode.OK);
                 }

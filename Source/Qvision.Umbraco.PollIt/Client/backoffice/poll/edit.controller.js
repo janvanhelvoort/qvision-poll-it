@@ -100,7 +100,7 @@
         items: '> div.control-group',
         tolerance: 'pointer',
         stop: function () {
-            pollItResource.updateSort($scope.content.answers.map(function (answer) { return answer.id }));
+            pollItResource.updateSort($scope.content.answers.map(function (answer) { return answer.id }), $scope.content.question.id);
         }
     };
 
@@ -131,7 +131,7 @@
     $scope.removeAnswer = function (answer, event) {
         event.preventDefault();
 
-        pollItResource.deleteAnswer(answer.id).then(function () {
+        pollItResource.deleteAnswer(answer.id, $routeParams.id).then(function () {
             $scope.content.answers = _.reject($scope.content.answers, function (x) {
                 return x.id === answer.id;
             });
