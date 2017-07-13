@@ -25,6 +25,7 @@ App_Data/
 
 # Website
 Source/Qvision.Umbraco.PollIt.Website/
+Source/Qvision.Umbraco.PollIt.Website.nuget/
 
 # Packaging
 Source/.vs/config/applicationhost.config
