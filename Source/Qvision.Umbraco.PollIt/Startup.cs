@@ -77,23 +77,14 @@
         /// <summary>
         /// Setup database.
         /// </summary>
-        /// <param name="applicationContext">
-        /// The application Context.
-        /// </param>
         private void SetupMigration()
         {            
-            var currentVersion = new SemVersion(0, 0, 0);
-
-            var migrations = ApplicationContext.Current.Services.MigrationEntryService.GetAll(ApplicationConstants.ProductName);
-            
+            var migrations = ApplicationContext.Current.Services.MigrationEntryService.GetAll(ApplicationConstants.ProductName);            
             var latestMigration = migrations.OrderByDescending(x => x.Version).FirstOrDefault();
 
-            if (latestMigration != null)
-            {
-                currentVersion = latestMigration.Version;
-            }
+            var currentVersion = latestMigration != null ? latestMigration.Version : new SemVersion(0, 0, 0);
 
-            var targetVersion = new SemVersion(0, 5, 0);
+            var targetVersion = new SemVersion(0, 5, 1);
             if (targetVersion != currentVersion)
             {
                 var migrationsRunner = new MigrationRunner(
