@@ -273,7 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\CamelCaseAttribute.cs" />
+    <Compile Include="CacheRefresher\PollItCacheRefresher.cs" />
     <Compile Include="Constants\ApplicationConstants.cs" />
+    <Compile Include="Constants\CacheRefresherConstants.cs" />
     <Compile Include="Constants\RuntimeCacheConstants.cs" />
     <Compile Include="Constants\TableConstants.cs" />
     <Compile Include="Constants\TreeConstants.cs" />
