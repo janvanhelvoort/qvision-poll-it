@@ -1,17 +1,15 @@
 ﻿namespace Qvision.Umbraco.PollIt.Controllers.ApiControllers
-{
-    using System.Linq;
+{    
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
-
-    using global::Umbraco.Core;
     using global::Umbraco.Web.Editors;
 
     using Qvision.Umbraco.PollIt.Attributes;
-    using Qvision.Umbraco.PollIt.Constants;
     using Qvision.Umbraco.PollIt.Models.Pocos;
     using Qvision.Umbraco.PollIt.Models.Repositories;
+    using Qvision.Umbraco.PollIt.CacheRefresher;
+    
 
     [CamelCase]
     public class AnswerApiController : UmbracoAuthorizedJsonController
@@ -23,7 +21,7 @@
 
             if (result != null)
             {
-                ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{answer.QuestionId}");
+                PollItCacheRefresher.ClearCache(answer.QuestionId);
                 this.Request.CreateResponse(HttpStatusCode.OK, answer);
             }
 
@@ -43,7 +41,7 @@
                 }
             }
 
-            ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{answer.QuestionId}");
+            PollItCacheRefresher.ClearCache(answer.questionId);
 
             return this.Request.CreateResponse(HttpStatusCode.OK);
         }
@@ -58,7 +56,7 @@
                 if (ResponseRepository.Current.DeleteByAnswerId(id) && AnswerRepository.Current.Delete(id))
                 {
                     transaction.Complete();
-                    ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{answer.QuestionId}");
+                    PollItCacheRefresher.ClearCache(answer.questionId);                    
 
                     return this.Request.CreateResponse(HttpStatusCode.OK);
                 }

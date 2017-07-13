@@ -23,5 +23,10 @@
         {
             get { return "Poll-it cache refresher"; }
         }
+
+        public static void ClearCache(int questionId = 0)
+        {
+            DistributedCache.Instance.Refresh(new Guid(CacheRefresherConstants.PollItCacheRefreshId), questionId);
+        }
     }
 }

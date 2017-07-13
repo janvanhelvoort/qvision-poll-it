@@ -4,11 +4,10 @@
     using System.Net.Http;
     using System.Web.Http;
 
-    using global::Umbraco.Core;
     using global::Umbraco.Web.Editors;
 
     using Qvision.Umbraco.PollIt.Attributes;
-    using Qvision.Umbraco.PollIt.Constants;
+    using Qvision.Umbraco.PollIt.CacheRefresher;
     using Qvision.Umbraco.PollIt.Models.Pocos;
     using Qvision.Umbraco.PollIt.Models.Repositories;
 
@@ -36,7 +35,8 @@
 
             if (result != null)
             {
-                ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{result.Id}");
+                PollItCacheRefresher.ClearCache(result.Id);
+                
                 return this.Request.CreateResponse(HttpStatusCode.OK, result);
             }
             
@@ -71,7 +71,7 @@
                 {
                     transaction.Complete();
 
-                    ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{id}");
+                    PollItCacheRefresher.ClearCache(id);
 
                     return this.Request.CreateResponse(HttpStatusCode.OK);
                 }
@@ -93,7 +93,8 @@
 
             if (result != null)
             {
-                ApplicationContext.Current.ApplicationCache.RuntimeCache.ClearCacheByKeySearch($"{RuntimeCacheConstants.RuntimeCacheKeyPrefix}{id}");
+                PollItCacheRefresher.ClearCache(id);
+
                 return this.Request.CreateResponse(HttpStatusCode.OK, result);
             }
 
