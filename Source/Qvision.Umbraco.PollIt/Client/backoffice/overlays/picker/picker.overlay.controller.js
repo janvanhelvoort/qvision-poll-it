@@ -11,36 +11,13 @@
 		$scope.isLoading = false;
 	});
 
-	if (!$scope.model.title) {
-		$scope.model.title = "Select a poll";
-	}
-
-	if (!$scope.model.multiPicker) {
-		$scope.model.hideSubmitButton = true;
-	}
-
-	if (!$scope.model.selectedPolls) {
-		$scope.model.selectedPolls = [];
+	if (!$scope.model.selection) {
+	    $scope.model.selection = [];
 	}
 
 	$scope.pickPoll = function (question) {
-		if (question.selected) {
-			question.selected = false;
-
-			angular.forEach($scope.model.selectedPolls, function (selectedPoll, index) {
-				if (selectedPoll.id === question.id) {
-					$scope.model.selectedPolls.splice(index, 1);
-				}
-			});
-		} else {
-			question.selected = true;
-
-			$scope.model.selectedPolls.push(question);
-
-			if (!$scope.model.multiPicker) {
-				$scope.model.submit($scope.model);
-			}
-		}
+	    $scope.model.selection.push(question);
+		$scope.model.submit($scope.model);
 	}
 }
 
