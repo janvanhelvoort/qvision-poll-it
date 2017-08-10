@@ -12,13 +12,14 @@
         }
 	],
 	javascript: [
+		'~/App_Plugins/pollit/resources/pollIt.resource.js',
+
 		'~/App_Plugins/pollit/backoffice/poll/delete.controller.js',
 		'~/App_Plugins/pollit/backoffice/poll/edit.controller.js',
 
 		'~/App_Plugins/pollit/backoffice/propertyeditors/picker/picker.controller.js',
 		'~/App_Plugins/pollit/backoffice/overlays/picker/picker.overlay.controller.js',
 
-		'~/App_Plugins/pollit/backoffice/dashboard/dashboard.controller.js',
-		'~/App_Plugins/pollit/backoffice/pollIt-resource.js'
+		'~/App_Plugins/pollit/backoffice/dashboard/dashboard.controller.js'		
 	]
 }

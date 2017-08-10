@@ -311,7 +311,7 @@
     <Content Include="Client\backoffice\dashboard\dashboard.controller.js" />
     <Content Include="Client\backoffice\dashboard\dashboard.html" />
     <Content Include="Client\backoffice\overlays\picker\picker.overlay.controller.js" />
-    <Content Include="Client\backoffice\pollIt-resource.js" />
+    <Content Include="Client\resources\pollIt.resource.js" />
     <Content Include="Client\backoffice\poll\delete.controller.js" />
     <Content Include="Client\backoffice\poll\delete.html" />
     <Content Include="Client\backoffice\poll\edit.controller.js" />
