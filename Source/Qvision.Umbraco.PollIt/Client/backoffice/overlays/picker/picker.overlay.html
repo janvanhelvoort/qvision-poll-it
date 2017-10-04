@@ -3,7 +3,7 @@
     <umb-load-indicator ng-if="isLoading"/>
 
     <!-- FILTER -->
-    <div class="umb-control-group -no-border">
+    <div class="umb-control-group -no-border" ng-if="!isLoading && content.questions.length !== 0">
         <div class="form-search">
             <i class="icon-search"></i>
             <input type="text"
@@ -16,16 +16,19 @@
         </div>
     </div>
 
-    <ul class="umb-actions umb-actions-child">
+    <ul class="umb-actions umb-actions-child" ng-if="!isLoading">
         <li ng-repeat="question in content.questions | orderBy:'name' | filter:content.filterTerm" ng-click="pickPoll(question)">
-            <a href title="{{ question.name }}">
-                <i ng-if="!question.selected" class="icon-poll" style="display: inline-block;"></i>
-                <i ng-if="question.selected" class="icon-check color-green" style="font-size: 22px; display: inline-block;"></i>
+            <a href="" title="{{ question.name }}">
+                <i class="icon-poll"></i>
                 <span class="menu-label">
                     {{question.name}}                    
                 </span>
             </a>
         </li>
+
+        <umb-empty-state ng-if="content.questions.length === 0" position="center">
+            <localize key="pollIt_noQuestions">No questions</localize>
+        </umb-empty-state>
     </ul>
 
     <div ng-if="content.error" class="alert alert-warning">

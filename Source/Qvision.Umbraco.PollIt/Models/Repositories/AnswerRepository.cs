@@ -42,13 +42,6 @@ namespace Qvision.Umbraco.PollIt.Models.Repositories
             return answer;
         }
 
-        public bool UpdateSort(int id, int index)
-        {
-            var result = this.Database.Update(new Answer { Id = id, Index = index }, new[] { "index" });
-
-            return result > 0;
-        }
-
         public bool Delete(int id)
         {
             var result = this.Database.Delete<Answer>(id);

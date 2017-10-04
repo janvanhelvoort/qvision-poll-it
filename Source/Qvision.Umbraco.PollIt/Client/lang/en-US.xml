@@ -9,6 +9,7 @@
     <key alias="tabResponses">Responses</key>
     <key alias="answers">Answers</key>    
     <key alias="responses">Responses</key>
+    
     <key alias="saveQuestionAddAnswer">Save the question in order to add answers.</key>
     <key alias="addAnswer">Add Answers</key>
     <key alias="addAnswerDescription">Add and remove answers from the list</key>
@@ -16,5 +17,8 @@
     <key alias="startDateDescription">Poll is visible from (optional)</key>
     <key alias="endDate">End date</key>
     <key alias="endDateDescription">The poll will be closed and the result page will be shown from (optional)</key>
+
+    <key alias="noQuestions">No quesions</key>
+    <key alias="selectQuestions">Select a poll</key>
   </area>
 </language>

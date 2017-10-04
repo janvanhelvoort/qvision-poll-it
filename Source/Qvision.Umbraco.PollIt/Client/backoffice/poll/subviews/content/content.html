@@ -1,0 +1,27 @@
+﻿<div ng-controller="PollIt.ContentController">
+    <umb-control-group label="@pollIt_addAnswer" description="@pollIt_addAnswerDescription">
+        <div class="control-group">
+            <input name="newItem" type="text" ng-model="answerInput.value" val-highlight="{{answerInput.hasError}}" />
+            <button class="btn" ng-click="addAnswer($event)" ng-disabled="model.answers.length > 6 || !answerInput.value">
+                <localize key="general_add">Add</localize>
+            </button>
+        </div>
+        <div ui-sortable="sortableOptions" ng-model="model.question.answers">
+            <div class="control-group" ng-repeat="answer in model.question.answers">
+                <i class="icon icon-navigation handle"></i>
+                <input type="text" ng-model="answer.value" required on-blur="updateAnswer(answer)" val-highlight="{{answer.hasError}}" />
+                <button class="btn btn-danger" ng-click="removeAnswer(answer, $event)">
+                    <localize key="general_delete">Remove</localize>
+                </button>
+            </div>
+        </div>
+    </umb-control-group>
+
+    <umb-control-group class="umb-datepicker" label="@pollIt_startDate" description="@pollIt_startDateDescription">
+        <umb-editor model="startDatePicker"></umb-editor>
+    </umb-control-group>
+
+    <umb-control-group class="umb-datepicker" label="@pollIt_endDate" description="@pollIt_endDateDescription">
+        <umb-editor model="endDatePicker"></umb-editor>
+    </umb-control-group>
+</div>
