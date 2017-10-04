@@ -6,19 +6,23 @@
 			icon: "icon-poll",
 			group: "Pickers",
             editor: {
-                view: "~/App_Plugins/pollit/backoffice/propertyEditors/picker.html",
+                view: "~/App_Plugins/pollit/backoffice/propertyEditors/picker/picker.html",
 				"valueType": "JSON"
             }
         }
 	],
 	javascript: [
+		'~/App_Plugins/pollit/resources/pollIt.resource.js',
+
 		'~/App_Plugins/pollit/backoffice/poll/delete.controller.js',
 		'~/App_Plugins/pollit/backoffice/poll/edit.controller.js',
 
-		'~/App_Plugins/pollit/backoffice/propertyeditors/picker.controller.js',
-		'~/App_Plugins/pollit/backoffice/propertyeditors/picker.overlay.controller.js',
+		'~/App_Plugins/pollit/backoffice/poll/subviews/content/content.controller.js',
+		'~/App_Plugins/pollit/backoffice/poll/subviews/responses/responses.controller.js',
 
-		'~/App_Plugins/pollit/backoffice/dashboard/dashboard.controller.js',
-		'~/App_Plugins/pollit/backoffice/pollIt-resource.js'
+		'~/App_Plugins/pollit/backoffice/propertyeditors/picker/picker.controller.js',
+		'~/App_Plugins/pollit/backoffice/overlays/picker/picker.overlay.controller.js',
+
+		'~/App_Plugins/pollit/backoffice/dashboard/dashboard.controller.js'		
 	]
 }

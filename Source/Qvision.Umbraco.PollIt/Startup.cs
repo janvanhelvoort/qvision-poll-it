@@ -138,8 +138,7 @@
                     { "postQuestionAnswer", urlHelper.GetUmbracoApiService<QuestionApiController>("PostAnswer") },
                     { "getQuestionResponsesById", urlHelper.GetUmbracoApiService<QuestionApiController>("GetResponses") },
 
-                    { "saveAnswer", urlHelper.GetUmbracoApiService<AnswerApiController>("Post") },
-                    { "updateSort", urlHelper.GetUmbracoApiService<AnswerApiController>("UpdateSort") },
+                    { "saveAnswer", urlHelper.GetUmbracoApiService<AnswerApiController>("Post") },                    
                     { "deleteAnswer", urlHelper.GetUmbracoApiService<AnswerApiController>("Delete") }
                 };
 

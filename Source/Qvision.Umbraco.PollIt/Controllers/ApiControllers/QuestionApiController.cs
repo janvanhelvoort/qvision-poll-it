@@ -1,5 +1,6 @@
 ﻿namespace Qvision.Umbraco.PollIt.Controllers.ApiControllers
 {
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
@@ -31,16 +32,42 @@
         [HttpPost]
         public HttpResponseMessage Post(Question question)
         {
-            var result = QuestionRepository.Current.Save(question);
-
-            if (result != null)
+            using (var transaction = this.ApplicationContext.DatabaseContext.Database.GetTransaction())
             {
-                PollItCacheRefresher.ClearCache(result.Id);
-                
-                return this.Request.CreateResponse(HttpStatusCode.OK, result);
+                // add or update question
+                question = QuestionRepository.Current.Save(question);
+
+                if (question != null)
+                {
+                    // remove old answers, they don't appear in the result.answers array
+                    var oldAnswers = QuestionRepository.Current.GetAnswers(question.Id).Where(a => !question.Answers.Any(r => r.Id.Equals(a.Id)));
+                    foreach (var deletedAnswer in oldAnswers)
+                    {
+                        if (!ResponseRepository.Current.DeleteByAnswerId(deletedAnswer.Id) && !AnswerRepository.Current.Delete(deletedAnswer.Id))
+                        {
+                            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't delete old answers, Error add of update of the quesion");
+                        }
+                    }
+
+                    // add or update answers
+                    foreach (var answer in question.Answers)
+                    {
+                        var result = answer.Id != 0 ? AnswerRepository.Current.Save(answer) : QuestionRepository.Current.PostAnswer(question.Id, answer);
+
+                        if (result != null)
+                        {
+                            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't add answer to question");
+                        }
+                    }
+
+                    transaction.Complete();
+                    PollItCacheRefresher.ClearCache(question.Id);
+
+                    return this.Request.CreateResponse(HttpStatusCode.OK, question);
+                }
+
+                return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't save question");
             }
-            
-            return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't save question");
         }
 
         [HttpDelete]

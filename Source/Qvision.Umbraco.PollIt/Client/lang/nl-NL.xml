@@ -9,6 +9,7 @@
     <key alias="tabResponses">Reacties</key>
     <key alias="answers">Antwoorden</key>
     <key alias="responses">Reacties</key>
+    
     <key alias="saveQuestionAddAnswer">Sla de vraag op om antwoorden toe te voegen.</key>
     <key alias="addAnswer">Antwoord toevoegen</key>
     <key alias="addAnswerDescription">Voeg en verwijder antwoorden uit de lijst</key>
@@ -16,5 +17,8 @@
     <key alias="startDateDescription">Poll is zichtbaar vanaf (optioneel)</key>
     <key alias="endDate">Eind datum</key>
     <key alias="endDateDescription">De poll wordt afgesloten en de resultatenpagina wordt getoond van (optioneel)</key>
+
+    <key alias="noQuestions">Geen polls gevonden</key>
+    <key alias="selectQuestions">Selecteer een poll</key>
   </area>
 </language>
