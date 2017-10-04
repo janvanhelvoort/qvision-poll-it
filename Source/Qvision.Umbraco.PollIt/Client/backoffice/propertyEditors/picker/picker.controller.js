@@ -1,4 +1,4 @@
-﻿function PickerController($scope, pollItResource, localizationService) {
+﻿function PickerController($scope, localizationService, pollItResource) {
     $scope.content = { selection: null, error: null }
 
     if ($scope.model.value) {

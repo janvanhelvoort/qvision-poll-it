@@ -5,7 +5,7 @@
     pollItResource.getOverview().then(function (result) {
         $scope.content.questions = result.data;
         $scope.page.isLoading = false;
-    });;
+    });
 
     $scope.navigate = function (id) {
         var location = "/pollIt/poll/edit/" + id;
