@@ -1,15 +1,15 @@
 ﻿namespace Qvision.Umbraco.PollIt.Controllers.ApiControllers
-{    
+{
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
+
     using global::Umbraco.Web.Editors;
 
     using Qvision.Umbraco.PollIt.Attributes;
+    using Qvision.Umbraco.PollIt.CacheRefresher;
     using Qvision.Umbraco.PollIt.Models.Pocos;
     using Qvision.Umbraco.PollIt.Models.Repositories;
-    using Qvision.Umbraco.PollIt.CacheRefresher;
-    
 
     [CamelCase]
     public class AnswerApiController : UmbracoAuthorizedJsonController
@@ -28,22 +28,6 @@
             return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't save answer");
         }
 
-        [HttpPost]
-        public HttpResponseMessage UpdateSort(int[] ids, int questionId)
-        {
-            if (ids != null && ids.Length > 0)
-            {
-                for (var i = 0; i < ids.Length; ++i)
-                {
-                    AnswerRepository.Current.UpdateSort(ids[i], i);
-                }
-            }
-
-            PollItCacheRefresher.ClearCache(questionId);
-
-            return this.Request.CreateResponse(HttpStatusCode.OK);
-        }
-
         [HttpDelete]
         public HttpResponseMessage Delete(int id, int questionId)
         {
@@ -52,7 +36,7 @@
                 if (ResponseRepository.Current.DeleteByAnswerId(id) && AnswerRepository.Current.Delete(id))
                 {
                     transaction.Complete();
-                    PollItCacheRefresher.ClearCache(questionId);                    
+                    PollItCacheRefresher.ClearCache(questionId);
 
                     return this.Request.CreateResponse(HttpStatusCode.OK);
                 }
