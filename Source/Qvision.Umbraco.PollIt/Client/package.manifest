@@ -17,6 +17,9 @@
 		'~/App_Plugins/pollit/backoffice/poll/delete.controller.js',
 		'~/App_Plugins/pollit/backoffice/poll/edit.controller.js',
 
+		'~/App_Plugins/pollit/backoffice/poll/subviews/content/content.controller.js',
+		'~/App_Plugins/pollit/backoffice/poll/subviews/responses/responses.controller.js',
+
 		'~/App_Plugins/pollit/backoffice/propertyeditors/picker/picker.controller.js',
 		'~/App_Plugins/pollit/backoffice/overlays/picker/picker.overlay.controller.js',
 

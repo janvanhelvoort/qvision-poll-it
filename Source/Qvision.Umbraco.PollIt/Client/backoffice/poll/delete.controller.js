@@ -1,6 +1,5 @@
 ﻿function DeleteController($scope, $location, navigationService, treeService, editorState, dialogService, notificationsService, pollItResource) {
     $scope.performDelete = function () {
-
         // stop from firing again on double-click
         if ($scope.busy) {
             return false;
