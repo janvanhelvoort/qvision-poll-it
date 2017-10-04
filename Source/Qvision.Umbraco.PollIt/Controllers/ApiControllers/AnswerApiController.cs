@@ -22,7 +22,7 @@
             if (result != null)
             {
                 PollItCacheRefresher.ClearCache(answer.QuestionId);
-                this.Request.CreateResponse(HttpStatusCode.OK, answer);
+                return this.Request.CreateResponse(HttpStatusCode.OK, answer);
             }
 
             return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't save answer");
