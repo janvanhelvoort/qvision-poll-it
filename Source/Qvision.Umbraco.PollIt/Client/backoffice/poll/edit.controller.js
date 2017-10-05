@@ -1,4 +1,4 @@
-﻿function EditController($scope, $routeParams, $filter, $location, navigationService, editorState, formHelper, localizationService, pollItResource) {
+﻿function EditController($scope, $routeParams, $filter, $location, notificationsService, navigationService, editorState, formHelper, localizationService, pollItResource) {
     $scope.page = { loading: false };
     $scope.model = { question: { answers: [] } };
 
@@ -27,8 +27,12 @@
             pollItResource.getQuestionAnswersById($routeParams.id).then(function (result) {
                 $scope.model.question.answers = $filter('orderBy')(result.data, 'index');
                 $scope.page.isLoading = false;
+            }, function (result) {
+                notificationsService.error(result.data.message);
             });
-        });;
+        }, function (result) {
+            notificationsService.error(result.data.message);
+        });
     }
 
     $scope.save = function () {
@@ -47,11 +51,11 @@
 
                 navigationService.syncTree({ tree: 'poll', path: ['-1', $scope.model.question.id.toString()], forceReload: true, activate: true });
 
-                if ($scope.page.create) {
-                    $scope.page.create = false;
+                if ($routeParams.create) {
                     $location.url("/pollIt/poll/edit/" + $scope.model.question.id);
                 }
-            }, function () {
+            }, function (result) {
+                notificationsService.error(result.data.message);
                 $scope.page.saveButtonState = "error";
             });;
         }

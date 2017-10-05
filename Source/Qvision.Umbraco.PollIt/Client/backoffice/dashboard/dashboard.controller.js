@@ -1,10 +1,12 @@
-﻿function DashboardController($scope, $location, $filter, pollItResource) {
+﻿function DashboardController($scope, $location, $filter, notificationsService, pollItResource) {
     $scope.page = { loading: false };
     $scope.content = { questions: [] };
 
     pollItResource.getOverview().then(function (result) {
         $scope.content.questions = result.data;
         $scope.page.isLoading = false;
+    }, function (result) {
+        notificationsService.error(result.data.message);
     });
 
     $scope.navigate = function (id) {

@@ -9,8 +9,7 @@
     <key alias="tabResponses">Reacties</key>
     <key alias="answers">Antwoorden</key>
     <key alias="responses">Reacties</key>
-    
-    <key alias="saveQuestionAddAnswer">Sla de vraag op om antwoorden toe te voegen.</key>
+        
     <key alias="addAnswer">Antwoord toevoegen</key>
     <key alias="addAnswerDescription">Voeg en verwijder antwoorden uit de lijst</key>
     <key alias="startDate">Begin datum</key>

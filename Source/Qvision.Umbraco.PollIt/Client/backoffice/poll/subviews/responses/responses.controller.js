@@ -1,10 +1,12 @@
-﻿function ResponsesController($scope, $routeParams, $filter, pollItResource) {
+﻿function ResponsesController($scope, $routeParams, $filter, notificationsService, pollItResource) {
 
     $scope.responses = [];
 
     if (!$routeParams.create) {
         pollItResource.getQuestionResponsesById($routeParams.id).then(function (result) {
             $scope.responses = result.data;
+        }, function (result) {
+            notificationsService.error(result.data.message);
         });
     }
 

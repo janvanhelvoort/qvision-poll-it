@@ -54,7 +54,7 @@
                     {
                         var result = answer.Id != 0 ? AnswerRepository.Current.Save(answer) : QuestionRepository.Current.PostAnswer(question.Id, answer);
 
-                        if (result != null)
+                        if (result == null)
                         {
                             return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't add answer to question");
                         }

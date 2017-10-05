@@ -9,8 +9,7 @@
     <key alias="tabResponses">Responses</key>
     <key alias="answers">Answers</key>    
     <key alias="responses">Responses</key>
-    
-    <key alias="saveQuestionAddAnswer">Save the question in order to add answers.</key>
+        
     <key alias="addAnswer">Add Answers</key>
     <key alias="addAnswerDescription">Add and remove answers from the list</key>
     <key alias="startDate">Start date</key>
