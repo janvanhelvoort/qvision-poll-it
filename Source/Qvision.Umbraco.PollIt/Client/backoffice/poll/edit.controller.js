@@ -51,8 +51,7 @@
 
                 navigationService.syncTree({ tree: 'poll', path: ['-1', $scope.model.question.id.toString()], forceReload: true, activate: true });
 
-                if ($scope.page.create) {
-                    $scope.page.create = false;
+                if ($routeParams.create) {
                     $location.url("/pollIt/poll/edit/" + $scope.model.question.id);
                 }
             }, function (result) {
