@@ -11,7 +11,6 @@
 
     using global::Umbraco.Core;
     using global::Umbraco.Core.Cache;
-    using global::Umbraco.Core.Configuration;
     using global::Umbraco.Core.Logging;
     using global::Umbraco.Core.Persistence.Migrations;
     using global::Umbraco.Web;
@@ -71,12 +70,6 @@
 
             // Add a new "Polls" section
             applicationContext.Services.SectionService.MakeNew("Poll It", ApplicationConstants.SectionAlias, ApplicationConstants.SectionIcon);
-
-            if (UmbracoVersion.Current.Major.Equals(7) && UmbracoVersion.Current.Minor < 7)
-            {
-                // Grant all existing users access to the new section
-                applicationContext.Services.UserService.AddSectionToAllUsers(ApplicationConstants.SectionAlias);
-            }
         }
 
         /// <summary>
