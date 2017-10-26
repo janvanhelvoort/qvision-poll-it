@@ -1,4 +1,4 @@
-﻿namespace Qvision.Umbraco.PollIt.Models
+﻿namespace Qvision.PollIt.Models
 {
     using System;
     using System.Collections.Generic;

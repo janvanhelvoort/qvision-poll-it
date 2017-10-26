@@ -1,11 +1,11 @@
-﻿namespace Qvision.Umbraco.PollIt.CacheRefresher
+﻿namespace Qvision.PollIt.CacheRefresher
 {
     using System;
 
-    using global::Umbraco.Core.Cache;
-    using global::Umbraco.Web.Cache;
+    using Qvision.PollIt.Constants;
 
-    using Qvision.Umbraco.PollIt.Constants;
+    using Umbraco.Core.Cache;
+    using Umbraco.Web.Cache;
 
     public class PollItCacheRefresher : JsonCacheRefresherBase<PollItCacheRefresher>
     {

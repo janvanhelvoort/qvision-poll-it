@@ -1,16 +1,16 @@
-﻿namespace Qvision.Umbraco.PollIt.Controllers.ApiControllers
+﻿namespace Qvision.PollIt.Controllers.ApiControllers
 {
     using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
 
-    using global::Umbraco.Web.Editors;
+    using Qvision.PollIt.Attributes;
+    using Qvision.PollIt.CacheRefresher;
+    using Qvision.PollIt.Models.Pocos;
+    using Qvision.PollIt.Models.Repositories;
 
-    using Qvision.Umbraco.PollIt.Attributes;
-    using Qvision.Umbraco.PollIt.CacheRefresher;
-    using Qvision.Umbraco.PollIt.Models.Pocos;
-    using Qvision.Umbraco.PollIt.Models.Repositories;
+    using Umbraco.Web.Editors;
 
     [CamelCase]
     public class QuestionApiController : UmbracoAuthorizedJsonController

@@ -1,4 +1,4 @@
-﻿namespace Qvision.Umbraco.PollIt.Constants
+﻿namespace Qvision.PollIt.Constants
 {
     /// <summary>
     /// The tree constants.

@@ -1,13 +1,13 @@
-﻿namespace Qvision.Umbraco.PollIt.Migrations
+﻿namespace Qvision.PollIt.Migrations
 {
-    using global::Umbraco.Core;
-    using global::Umbraco.Core.Logging;
-    using global::Umbraco.Core.Persistence;
-    using global::Umbraco.Core.Persistence.Migrations;
-    using global::Umbraco.Core.Persistence.SqlSyntax;
+    using Qvision.PollIt.Constants;
+    using Qvision.PollIt.Models.Pocos;
 
-    using Qvision.Umbraco.PollIt.Constants;
-    using Qvision.Umbraco.PollIt.Models.Pocos;
+    using Umbraco.Core;
+    using Umbraco.Core.Logging;
+    using Umbraco.Core.Persistence;
+    using Umbraco.Core.Persistence.Migrations;
+    using Umbraco.Core.Persistence.SqlSyntax;
 
     [Migration("0.5.0", 1, ApplicationConstants.ProductName)]
     public class InitialMigration : MigrationBase

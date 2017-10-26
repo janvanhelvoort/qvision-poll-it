@@ -1,4 +1,4 @@
-﻿namespace Qvision.Umbraco.PollIt
+﻿namespace Qvision.PollIt
 {
     using System;
     using System.Collections.Generic;
@@ -9,17 +9,17 @@
 
     using AutoMapper;
 
-    using global::Umbraco.Core;
-    using global::Umbraco.Core.Cache;
-    using global::Umbraco.Core.Logging;
-    using global::Umbraco.Core.Persistence.Migrations;
-    using global::Umbraco.Web;
-    using global::Umbraco.Web.UI.JavaScript;
+    using Qvision.PollIt.CacheRefresher;
+    using Qvision.PollIt.Constants;
+    using Qvision.PollIt.Controllers.ApiControllers;
+    using Qvision.PollIt.Mapping.Profile;
 
-    using Qvision.Umbraco.PollIt.CacheRefresher;
-    using Qvision.Umbraco.PollIt.Constants;
-    using Qvision.Umbraco.PollIt.Controllers.ApiControllers;
-    using Qvision.Umbraco.PollIt.Mapping.Profile;
+    using Umbraco.Core;
+    using Umbraco.Core.Cache;
+    using Umbraco.Core.Logging;
+    using Umbraco.Core.Persistence.Migrations;
+    using Umbraco.Web;
+    using Umbraco.Web.UI.JavaScript;
 
     using Semver;
 

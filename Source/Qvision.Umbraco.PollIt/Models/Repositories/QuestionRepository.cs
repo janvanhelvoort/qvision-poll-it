@@ -1,15 +1,15 @@
-﻿namespace Qvision.Umbraco.PollIt.Models.Repositories
+﻿namespace Qvision.PollIt.Models.Repositories
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    using global::Umbraco.Core;
-    using global::Umbraco.Core.Persistence;
-    using global::Umbraco.Core.Persistence.SqlSyntax;
+    using Qvision.PollIt.Constants;
+    using Qvision.PollIt.Models.Pocos;
 
-    using Qvision.Umbraco.PollIt.Constants;
-    using Qvision.Umbraco.PollIt.Models.Pocos;
+    using Umbraco.Core;
+    using Umbraco.Core.Persistence;
+    using Umbraco.Core.Persistence.SqlSyntax;
 
     internal class QuestionRepository
     {
