@@ -105,8 +105,8 @@
   <Target Name="PrepareFiles" DependsOnTargets="Compile">
     <ItemGroup>
       <!-- Shared -->
-      <BinFiles Include="$(CoreProjectDir)\bin\$(BuildConfig)\Qvision.Umbraco.PollIt.dll" />	  
-      <PdbFiles Include="$(CoreProjectDir)\bin\$(BuildConfig)\Qvision.Umbraco.PollIt.pdb" />	  
+      <BinFiles Include="$(CoreProjectDir)\bin\$(BuildConfig)\Qvision.PollIt.dll" />	  
+      <PdbFiles Include="$(CoreProjectDir)\bin\$(BuildConfig)\Qvision.PollIt.pdb" />	  
       <AppPluginFiles Include="$(CoreProjectDir)\Client\**\*.*" />
      
       <DashboardXDTInstallFile Include="$(MSBuildProjectDirectory)\transforms\Dashboard.config.install.xdt" />     
