@@ -1,4 +1,4 @@
-﻿namespace Qvision.Umbraco.PollIt.Attributes
+﻿namespace Qvision.PollIt.Attributes
 {
     using System;
     using System.Linq;

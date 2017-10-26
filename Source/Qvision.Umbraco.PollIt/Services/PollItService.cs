@@ -1,4 +1,4 @@
-﻿namespace Qvision.Umbraco.PollIt.Services
+﻿namespace Qvision.PollIt.Services
 {
     using System;
     using System.Collections.Generic;
@@ -6,12 +6,12 @@
 
     using AutoMapper;
 
-    using global::Umbraco.Core;
+    using Qvision.PollIt.CacheRefresher;
+    using Qvision.PollIt.Constants;
+    using Qvision.PollIt.Models;
+    using Qvision.PollIt.Models.Repositories;
 
-    using Qvision.Umbraco.PollIt.CacheRefresher;
-    using Qvision.Umbraco.PollIt.Constants;
-    using Qvision.Umbraco.PollIt.Models;
-    using Qvision.Umbraco.PollIt.Models.Repositories;
+    using Umbraco.Core;
 
     public class PollItService
     {

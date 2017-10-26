@@ -1,11 +1,11 @@
-﻿namespace Qvision.Umbraco.PollIt.Models.Pocos
+﻿namespace Qvision.PollIt.Models.Pocos
 {
     using System;
     using System.Collections.Generic;
 
-    using global::Umbraco.Core.Persistence;
+    using Qvision.PollIt.Constants;
 
-    using Qvision.Umbraco.PollIt.Constants;
+    using Umbraco.Core.Persistence;
 
     /// <summary>
     /// The poll question.

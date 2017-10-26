@@ -1,17 +1,17 @@
-﻿namespace Qvision.Umbraco.PollIt.Controllers.TreeControllers
+﻿namespace Qvision.PollIt.Controllers.TreeControllers
 {
     using System.Globalization;
     using System.Net.Http.Formatting;
 
-    using global::Umbraco.Core;
-    using global::Umbraco.Web.Models.Trees;
-    using global::Umbraco.Web.Mvc;
-    using global::Umbraco.Web.Trees;
-
-    using Qvision.Umbraco.PollIt.Constants;
-    using Qvision.Umbraco.PollIt.Models.Repositories;
+    using Qvision.PollIt.Constants;
+    using Qvision.PollIt.Models.Repositories;
 
     using umbraco.BusinessLogic.Actions;
+
+    using Umbraco.Core;
+    using Umbraco.Web.Models.Trees;
+    using Umbraco.Web.Mvc;
+    using Umbraco.Web.Trees;
 
     [Tree(ApplicationConstants.SectionAlias, TreeConstants.TreeAlias, TreeConstants.TreeTitle)]
     [PluginController(ApplicationConstants.SectionAlias)]

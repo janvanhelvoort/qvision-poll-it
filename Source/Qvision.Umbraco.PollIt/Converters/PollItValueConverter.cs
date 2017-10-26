@@ -1,14 +1,14 @@
-﻿namespace Qvision.Umbraco.PollIt.Converters
+﻿namespace Qvision.PollIt.Converters
 {
     using System;
 
-    using global::Umbraco.Core.Logging;
-    using global::Umbraco.Core.Models.PublishedContent;
-    using global::Umbraco.Core.PropertyEditors;
+    using Qvision.PollIt.Constants;
+    using Qvision.PollIt.Models;
+    using Qvision.PollIt.Services;
 
-    using Qvision.Umbraco.PollIt.Constants;
-    using Qvision.Umbraco.PollIt.Models;
-    using Qvision.Umbraco.PollIt.Services;
+    using Umbraco.Core.Logging;
+    using Umbraco.Core.Models.PublishedContent;
+    using Umbraco.Core.PropertyEditors;
 
     [PropertyValueType(typeof(Question))]
     public class PollItValueConverter : PropertyValueConverterBase

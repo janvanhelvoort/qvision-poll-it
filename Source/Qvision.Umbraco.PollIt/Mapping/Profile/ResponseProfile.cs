@@ -1,4 +1,4 @@
-namespace Qvision.Umbraco.PollIt.Mapping.Profile
+namespace Qvision.PollIt.Mapping.Profile
 {
     using AutoMapper;
 

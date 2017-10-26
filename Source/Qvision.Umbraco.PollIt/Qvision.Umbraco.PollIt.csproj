@@ -7,8 +7,8 @@
     <ProjectGuid>{9E1FD536-1722-4032-B0F0-AF5628C098A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Qvision.Umbraco.PollIt</RootNamespace>
-    <AssemblyName>Qvision.Umbraco.PollIt</AssemblyName>
+    <RootNamespace>Qvision.PollIt</RootNamespace>
+    <AssemblyName>Qvision.PollIt</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
