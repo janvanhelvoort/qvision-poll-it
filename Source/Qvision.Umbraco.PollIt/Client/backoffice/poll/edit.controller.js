@@ -1,5 +1,5 @@
 ﻿function EditController($scope, $routeParams, $filter, $location, notificationsService, navigationService, editorState, formHelper, localizationService, pollItResource) {
-    $scope.page = { loading: false };
+    $scope.page = { isLoading: false };
     $scope.model = { question: { answers: [] } };
 
     $scope.page.navigation = [

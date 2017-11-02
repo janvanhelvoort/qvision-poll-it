@@ -1,9 +1,9 @@
 ﻿<div ng-controller="PollIt.EditController">
     <form name="contentForm" novalidate val-form-manager>
 
-        <umb-load-indicator ng-if="page.loading"></umb-load-indicator>
+        <umb-load-indicator ng-if="page.isLoading"></umb-load-indicator>
 
-        <umb-editor-view ng-if="!page.loading">
+        <umb-editor-view ng-if="!page.isLoading">
 
             <umb-editor-header name="model.question.name" navigation="page.navigation" hide-icon="true" hide-description="true" hide-alias="true"></umb-editor-header>
 
