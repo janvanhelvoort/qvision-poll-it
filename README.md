@@ -25,7 +25,7 @@ To [install from NuGet](https://www.nuget.org/packages/Qvision.PollIt), you can 
 There is also a [MyGet build](https://www.myget.org/feed/janvanhelvoort/package/nuget/Qvision.PollIt) - for development releases.
 
 #### After installation 
-There will be a new section, 'Poll It'. If you can't see this section, you need to add the permissions for the users. Whitin this section, you can create and manage polls.
+There will be a new section, 'Poll It'. If you can't see this section, you need to add the permissions for the users. Whitin this section, you can create and manage polls. With Umbraco 7.7, the sections aren't managed at user level, but with user groups. The possibility to easily add a new section to a group isn't available at the moment. 
 ![Dashboard](Documentation/Screenshots/Section%20Dashboard.png)
 
 ## Usage
