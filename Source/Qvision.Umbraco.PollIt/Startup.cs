@@ -136,7 +136,9 @@
                     { "getQuestionResponsesById", urlHelper.GetUmbracoApiService<QuestionApiController>("GetResponses") },
 
                     { "saveAnswer", urlHelper.GetUmbracoApiService<AnswerApiController>("Post") },                    
-                    { "deleteAnswer", urlHelper.GetUmbracoApiService<AnswerApiController>("Delete") }
+                    { "deleteAnswer", urlHelper.GetUmbracoApiService<AnswerApiController>("Delete") },
+
+                    { "AmountOfAnswers", PollItContext.Current.AmountOfAnswers }
                 };
 
                 e.Add("pollIt", urlDictionairy);
