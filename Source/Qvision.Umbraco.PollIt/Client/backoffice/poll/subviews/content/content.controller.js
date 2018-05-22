@@ -1,6 +1,8 @@
 ﻿function ContentController($scope, $routeParams, angularHelper) {
     $scope.answerInput = { value: '', hasError: false };
 
+    $scope.amountOfAnswers = Umbraco.Sys.ServerVariables.pollIt.AmountOfAnswers;
+
     $scope.sortableOptions = {
         axis: 'y',
         containment: 'parent',
@@ -38,13 +40,13 @@
     $scope.endDatePicker = { view: 'datepicker', value: $scope.model.question.endDate, config: $.extend({}, $scope.config.datePicker) };
 
     $scope.$watch('startDatePicker', function () {
-        if ($scope.startDatePicker != undefined) {
+        if (typeof $scope.startDatePicker !== 'undefined') {
             $scope.model.question.startDate = $scope.startDatePicker.value;
         }
     }, true);
 
     $scope.$watch('endDatePicker', function () {
-        if ($scope.endDatePicker != undefined) {
+        if (typeof $scope.endDatePicker !== 'undefined') {
             $scope.model.question.endDate = $scope.endDatePicker.value;
         }
     }, true);

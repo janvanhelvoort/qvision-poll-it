@@ -177,6 +177,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\System.Data.SqlServerCe.dll</HintPath>
@@ -275,6 +276,7 @@
     <Compile Include="Attributes\CamelCaseAttribute.cs" />
     <Compile Include="CacheRefresher\PollItCacheRefresher.cs" />
     <Compile Include="Constants\ApplicationConstants.cs" />
+    <Compile Include="Constants\AppSettings.cs" />
     <Compile Include="Constants\CacheRefresherConstants.cs" />
     <Compile Include="Constants\RuntimeCacheConstants.cs" />
     <Compile Include="Constants\TableConstants.cs" />
@@ -297,6 +299,7 @@
     <Compile Include="Models\Repositories\QuestionRepository.cs" />
     <Compile Include="Models\Repositories\ResponseRepository.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="PollItContext.cs" />
     <Compile Include="Properties\VersionInfo.cs" />
     <Compile Include="Services\PollItService.cs" />
     <Compile Include="Startup.cs" />
