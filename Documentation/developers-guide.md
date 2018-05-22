@@ -3,6 +3,7 @@
 ## Contents
 
 * [Introduction](#introduction)
+* [Settings](#settings)
 * [Get the value](#get-the-value)
 * [Service](#service)
 
@@ -15,6 +16,16 @@
 The poll can be requested strongly typed with a custom property value converter or using the service.
 
 With the service, a vote can be registered to the poll, therefore you need the `question id` and `answer id`.
+
+---
+
+### Settings
+
+#### Amount of answers
+From version `0.9.0`, you can specify the amount of answers per question. _If the value isn't defined, the default value will be:_ `6`
+```xml
+<add key="pollIt:AmountOfAnswers" value="6"/>
+```
 
 ---
 
