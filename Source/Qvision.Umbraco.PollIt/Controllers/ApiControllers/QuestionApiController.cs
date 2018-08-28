@@ -43,7 +43,7 @@
                     var oldAnswers = QuestionRepository.Current.GetAnswers(question.Id).Where(a => !question.Answers.Any(r => r.Id.Equals(a.Id)));
                     foreach (var deletedAnswer in oldAnswers)
                     {
-                        if (!ResponseRepository.Current.DeleteByAnswerId(deletedAnswer.Id) && !AnswerRepository.Current.Delete(deletedAnswer.Id))
+                        if (!ResponseRepository.Current.DeleteByAnswerId(deletedAnswer.Id) || !AnswerRepository.Current.Delete(deletedAnswer.Id))
                         {
                             return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't delete old answers, Error add of update of the quesion");
                         }
