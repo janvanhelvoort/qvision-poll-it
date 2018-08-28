@@ -14,7 +14,6 @@
                 angular.forEach($scope.model.question.answers, function (val, index) {
                     val.index = index;
                 });
-
             });
         }
     };
@@ -78,7 +77,8 @@
         event.preventDefault();
 
         $scope.model.question.answers = _.reject($scope.model.question.answers, function (x) {
-            return x.id === answer.id;
+            return x.index === answer.index;
+        });
         });
     };
 }
