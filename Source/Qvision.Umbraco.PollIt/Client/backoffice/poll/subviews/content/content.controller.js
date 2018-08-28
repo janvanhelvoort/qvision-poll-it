@@ -14,7 +14,6 @@
                 angular.forEach($scope.model.question.answers, function (val, index) {
                     val.index = index;
                 });
-
             });
         }
     };
@@ -25,7 +24,7 @@
             pickTime: false,
             useSeconds: false,
             useMinutes: false,
-            format: "YYYY-MM-DD HH:mm:ss",
+            format: "YYYY-MM-DD",
             icons: {
                 time: "icon-time",
                 date: "icon-calendar",
@@ -78,7 +77,11 @@
         event.preventDefault();
 
         $scope.model.question.answers = _.reject($scope.model.question.answers, function (x) {
-            return x.id === answer.id;
+            return x.index === answer.index;
+        });
+
+        angular.forEach($scope.model.question.answers, function (val, index) {
+            val.index = index;
         });
     };
 }
