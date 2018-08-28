@@ -79,6 +79,9 @@
         $scope.model.question.answers = _.reject($scope.model.question.answers, function (x) {
             return x.index === answer.index;
         });
+
+        angular.forEach($scope.model.question.answers, function (val, index) {
+            val.index = index;
         });
     };
 }
