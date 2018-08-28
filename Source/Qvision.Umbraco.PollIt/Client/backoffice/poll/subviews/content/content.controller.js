@@ -24,7 +24,7 @@
             pickTime: false,
             useSeconds: false,
             useMinutes: false,
-            format: "YYYY-MM-DD HH:mm:ss",
+            format: "YYYY-MM-DD",
             icons: {
                 time: "icon-time",
                 date: "icon-calendar",
