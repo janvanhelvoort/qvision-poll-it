@@ -10,7 +10,7 @@
     /// <summary>
     /// The poll question.
     /// </summary>
-    [TableName(TableConstants.Questions.TableName)]    
+    [TableName(TableConstants.Questions.TableName)]
     public class Question
     {
         /// <summary>

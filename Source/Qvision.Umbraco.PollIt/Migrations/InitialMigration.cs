@@ -23,7 +23,7 @@
         public override void Up()
         {
             if (!this.databaseSchema.TableExist(TableConstants.Questions.TableName))
-            {                
+            {
                 this.Create.Table(TableConstants.Questions.TableName)
                     .WithColumn("Id").AsInt32().NotNullable()
                         .PrimaryKey("PK_poll_questions").Identity()
@@ -58,7 +58,7 @@
                         .PrimaryKey("PK_poll_responses").Identity()
                     .WithColumn("ResponseDate").AsDateTime().NotNullable()
                     .WithColumn("QuestionId").AsInt32().NotNullable()
-                    .WithColumn("AnswerId").AsInt32().NotNullable();              
+                    .WithColumn("AnswerId").AsInt32().NotNullable();
 
                 this.Create.ForeignKey("QuestionId_Response")
                     .FromTable(TableConstants.Responses.TableName).ForeignColumn("QuestionId")

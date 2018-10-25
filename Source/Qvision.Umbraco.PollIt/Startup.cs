@@ -76,8 +76,8 @@
         /// Setup database.
         /// </summary>
         private void SetupMigration()
-        {            
-            var migrations = ApplicationContext.Current.Services.MigrationEntryService.GetAll(ApplicationConstants.ProductName);            
+        {
+            var migrations = ApplicationContext.Current.Services.MigrationEntryService.GetAll(ApplicationConstants.ProductName);
             var latestMigration = migrations.OrderByDescending(x => x.Version).FirstOrDefault();
 
             var currentVersion = latestMigration != null ? latestMigration.Version : new SemVersion(0, 0, 0);
@@ -135,7 +135,7 @@
                     { "postQuestionAnswer", urlHelper.GetUmbracoApiService<QuestionApiController>("PostAnswer") },
                     { "getQuestionResponsesById", urlHelper.GetUmbracoApiService<QuestionApiController>("GetResponses") },
 
-                    { "saveAnswer", urlHelper.GetUmbracoApiService<AnswerApiController>("Post") },                    
+                    { "saveAnswer", urlHelper.GetUmbracoApiService<AnswerApiController>("Post") },
                     { "deleteAnswer", urlHelper.GetUmbracoApiService<AnswerApiController>("Delete") },
 
                     { "AmountOfAnswers", PollItContext.Current.AmountOfAnswers }

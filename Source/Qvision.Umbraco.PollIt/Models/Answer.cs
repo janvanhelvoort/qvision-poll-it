@@ -1,6 +1,6 @@
 ﻿namespace Qvision.PollIt.Models
 {
-    using System.Collections.Generic;  
+    using System.Collections.Generic;
 
     public class Answer
     {
