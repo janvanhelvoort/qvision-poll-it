@@ -39,6 +39,15 @@
         if (formHelper.submitForm({ scope: $scope, statusMessage: "Saving..." })) {
             $scope.page.saveButtonState = "busy";
 
+            if (typeof $scope.model.question.startDate !== 'undefined' && typeof $scope.model.question.endDate !== 'undefined') {
+                if (new Date($scope.model.question.startDate) > new Date($scope.model.question.endDate)) {
+                    notificationsService.error(localizationService.localize("pollIt_startDateBeforeEndDate"));
+                    $scope.page.saveButtonState = "error";
+
+                    return;
+                }
+            }
+
             pollItResource.saveQuestion($scope.model.question).then(function (result) {
                 formHelper.resetForm({ scope: $scope });
 

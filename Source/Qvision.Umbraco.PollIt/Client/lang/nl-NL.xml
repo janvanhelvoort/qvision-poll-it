@@ -16,6 +16,7 @@
     <key alias="startDateDescription">Poll is zichtbaar vanaf (optioneel)</key>
     <key alias="endDate">Eind datum</key>
     <key alias="endDateDescription">De poll wordt afgesloten en de resultatenpagina wordt getoond van (optioneel)</key>
+    <key alias="startDateBeforeEndDate">De startdatum moet eerder zijn dan de einddatum</key>
 
     <key alias="noQuestions">Geen polls gevonden</key>
     <key alias="selectQuestions">Selecteer een poll</key>
