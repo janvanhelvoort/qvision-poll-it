@@ -21,7 +21,7 @@
 
         protected override TreeNodeCollection GetTreeNodes(string id, FormDataCollection queryStrings)
         {
-            TreeNodeCollection nodes = new TreeNodeCollection();
+            var nodes = new TreeNodeCollection();
 
             if (id.Equals(this.rootId))
             {
@@ -39,7 +39,7 @@
 
         protected override MenuItemCollection GetMenuForNode(string id, FormDataCollection queryStrings)
         {
-            MenuItemCollection collection = new MenuItemCollection();
+            var collection = new MenuItemCollection();
 
             if (id.Equals(this.rootId))
             {

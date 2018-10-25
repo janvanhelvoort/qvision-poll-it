@@ -5,7 +5,7 @@
         <ul class="thumbnails">
             <li class="span4" ng-repeat="question in content.questions">
                 <div style="margin-right: 20px; padding: 20px;">
-                    <a href ng-click="navigate(question.id)" title="{{question.name}}">
+                    <a href="javascript:;" ng-click="navigate(question.id)" title="{{question.name}}">
                         <span style="font-weight: bold;">{{question.name}}</span>
                         <div class="umb-listview" ng-if="question.answers.length > 0">
                             <table class="table table-striped">

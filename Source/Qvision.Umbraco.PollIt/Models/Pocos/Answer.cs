@@ -7,7 +7,7 @@
     /// <summary>
     /// The answer.
     /// </summary>
-    [TableName(TableConstants.Answers.TableName)]    
+    [TableName(TableConstants.Answers.TableName)]
     public class Answer
     {
         /// <summary>
@@ -22,7 +22,7 @@
 
         /// <summary>
         /// Gets or sets the answer.
-        /// </summary>        
+        /// </summary>
         public string Value { get; set; }
 
         /// <summary>

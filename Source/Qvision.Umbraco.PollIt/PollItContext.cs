@@ -19,7 +19,7 @@
         /// </summary>
         private PollItContext()
         {
-            this.AmountOfAnswers = this.GetAppSetting<int>(Constants.AppSettings.AmountOfAnswers, 6);
+            this.AmountOfAnswers = this.GetAppSetting(Constants.AppSettings.AmountOfAnswers, 6);
             instance = this;
         }
 

@@ -2,9 +2,9 @@
 
     <umb-load-indicator ng-if="isLoading" />
 
-    <umb-node-preview ng-if="content.selection.name" name="content.selection.name" icon="icon-poll" allow-remove="true" on-remove="remove()"/>
-    
-    <a href="" ng-if="!content.selection.name" class="umb-node-preview-add" ng-click="openPollPicker()" prevent-default>
+    <umb-node-preview ng-if="content.selection.name" name="content.selection.name" icon="icon-poll" allow-remove="true" on-remove="remove()" />
+
+    <a href="javascript:;" ng-if="!content.selection.name" class="umb-node-preview-add" ng-click="openPollPicker()" prevent-default>
         <localize key="general_add">Add</localize>
     </a>
 
@@ -12,5 +12,5 @@
         {{ content.error }}
     </div>
 
-    <umb-overlay ng-if="content.pollPickerOverlay.show" model="content.pollPickerOverlay" view="content.pollPickerOverlay.view" position="right"/>    
+    <umb-overlay ng-if="content.pollPickerOverlay.show" model="content.pollPickerOverlay" view="content.pollPickerOverlay.view" position="right" />
 </div>

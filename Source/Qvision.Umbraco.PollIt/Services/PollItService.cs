@@ -46,7 +46,7 @@
 
             if (result != null)
             {
-                PollItCacheRefresher.ClearCache(questionId);                
+                PollItCacheRefresher.ClearCache(questionId);
             }
 
             return this.GetQuestion(questionId);

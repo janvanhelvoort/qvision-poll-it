@@ -36,7 +36,7 @@ namespace Qvision.PollIt.Models.Repositories
         {
             if (answer != null && answer.Id > 0)
             {
-                this.Database.Update(answer);                
+                this.Database.Update(answer);
             }
 
             return answer;

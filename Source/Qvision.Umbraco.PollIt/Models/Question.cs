@@ -15,9 +15,9 @@
 
         public DateTime? EndDate { get; set; }
 
-        public DateTime CreatedDate { get; set; }       
+        public DateTime CreatedDate { get; set; }
 
-        public IEnumerable<Answer> Answers { get; set; }        
+        public IEnumerable<Answer> Answers { get; set; }
     }
 }
 

@@ -33,7 +33,7 @@
                 today: "icon-locate"
             }
         }
-    }
+    };
 
     $scope.startDatePicker = { view: 'datepicker', value: $scope.model.question.startDate, config: $.extend({}, $scope.config.datePicker) };
     $scope.endDatePicker = { view: 'datepicker', value: $scope.model.question.endDate, config: $.extend({}, $scope.config.datePicker) };

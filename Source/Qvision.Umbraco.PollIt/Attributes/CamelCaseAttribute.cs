@@ -12,7 +12,7 @@
         public void Initialize(HttpControllerSettings currentConfiguration, HttpControllerDescriptor currentDescriptor)
         {
             var currentFormatter = currentConfiguration.Formatters.OfType<JsonMediaTypeFormatter>().Single();
-            
+
             // remove the current formatter
             currentConfiguration.Formatters.Remove(currentFormatter);
 
@@ -20,7 +20,7 @@
             {
                 SerializerSettings = { ContractResolver = new CamelCasePropertyNamesContractResolver() }
             };
-            
+
             // add the camel case formatter
             currentConfiguration.Formatters.Add(camelFormatter);
         }

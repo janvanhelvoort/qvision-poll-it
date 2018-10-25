@@ -1,5 +1,5 @@
 ﻿function PickerController($scope, localizationService, pollItResource) {
-    $scope.content = { selection: null, error: null }
+    $scope.content = { selection: null, error: null };
 
     if ($scope.model.value) {
         pollItResource.getQuestionById($scope.model.value).then(function(result) {
@@ -32,14 +32,14 @@
                     $scope.content.pollPickerOverlay = null;
                     $scope.content.error = null;
                 }
-            }
+            };
         }
-    }
+    };
 
     $scope.remove = function () {
         $scope.content.selection = null;
         $scope.model.value = null;
-    }
+    };
 }
 
 angular.module("umbraco").controller("PollIt.PickerController", PickerController);

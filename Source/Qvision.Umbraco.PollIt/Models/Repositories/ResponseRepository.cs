@@ -41,7 +41,7 @@ namespace Qvision.PollIt.Models.Repositories
 
         public bool DeleteByAnswerId(int id)
         {
-            var query = new Sql().Where<Response>(response => response.AnswerId.Equals(id), this.SqlSyntax);            
+            var query = new Sql().Where<Response>(response => response.AnswerId.Equals(id), this.SqlSyntax);
 
             return this.Database.Delete<Response>(query) > -1;
         }
