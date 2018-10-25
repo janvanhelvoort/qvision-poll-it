@@ -40,7 +40,7 @@
                 for (var i = 0; i < err.data.notifications.length; i++) {
                     notificationsService.showNotification(err.data.notifications[i]);
                 }
-            };
+            }
         });
 
         return true;

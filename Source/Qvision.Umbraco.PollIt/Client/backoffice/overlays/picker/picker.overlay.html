@@ -1,6 +1,6 @@
 ﻿<div ng-controller="PollIt.PickerOverlayController">
 
-    <umb-load-indicator ng-if="isLoading"/>
+    <umb-load-indicator ng-if="isLoading" />
 
     <!-- FILTER -->
     <div class="umb-control-group -no-border" ng-if="!isLoading && content.questions.length !== 0">
@@ -9,7 +9,6 @@
             <input type="text"
                    class="-full-width-input"
                    ng-model="content.filterTerm"
-                   class="umb-search-field search-query search-input input-block-level"
                    localize="placeholder"
                    placeholder="@placeholders_filter"
                    umb-auto-focus>
@@ -21,7 +20,7 @@
             <a href="" title="{{ question.name }}">
                 <i class="icon-poll"></i>
                 <span class="menu-label">
-                    {{question.name}}                    
+                    {{question.name}}
                 </span>
             </a>
         </li>

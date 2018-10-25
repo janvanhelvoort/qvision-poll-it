@@ -57,7 +57,7 @@
             }, function (result) {
                 notificationsService.error(result.data.message);
                 $scope.page.saveButtonState = "error";
-            });;
+            });
         }
     };
 }
