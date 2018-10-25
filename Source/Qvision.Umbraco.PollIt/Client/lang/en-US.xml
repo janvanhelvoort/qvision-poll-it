@@ -19,5 +19,7 @@
 
     <key alias="noQuestions">No quesions</key>
     <key alias="selectQuestions">Select a poll</key>
+
+    <key alias="deleteConfirmation">It will be gone forever. Are you sure</key>
   </area>
 </language>

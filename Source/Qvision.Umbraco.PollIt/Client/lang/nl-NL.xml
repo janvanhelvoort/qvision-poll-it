@@ -19,5 +19,7 @@
 
     <key alias="noQuestions">Geen polls gevonden</key>
     <key alias="selectQuestions">Selecteer een poll</key>
+
+    <key alias="deleteConfirmation">Het zal voor altijd verdwenen zijn. Weet je het zeker</key>
   </area>
 </language>

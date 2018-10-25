@@ -4,6 +4,10 @@
             <localize key="defaultdialogs_confirmdelete">Are you sure you want to delete</localize> <strong>{{currentNode.name}}</strong>?
         </p>
 
+        <div>
+            <p><i class="icon icon-alert color-red" style="font-size:20px"></i><localize key="pollIt_deleteConfirmation">It will be gone forever. Are you sure</localize>?</p>
+        </div>
+
         <umb-confirm on-confirm="performDelete" on-cancel="cancel" />
     </div>
 </div>
