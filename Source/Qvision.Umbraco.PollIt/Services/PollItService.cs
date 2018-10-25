@@ -42,11 +42,28 @@
 
         public Question Vote(int questionId, int answerId)
         {
-            var result = QuestionRepository.Current.PostResponse(questionId, answerId);
+            var question = QuestionRepository.Current.GetById(questionId);
 
-            if (result != null)
+            var canVote = true;
+
+            if(question.StartDate != null)
             {
-                PollItCacheRefresher.ClearCache(questionId);
+                canVote = DateTime.Now > question.StartDate;
+            }
+
+            if (canVote && question.EndDate != null)
+            {
+                canVote = DateTime.Now < question.EndDate;
+            }
+
+            if (canVote)
+            {
+                var result = QuestionRepository.Current.PostResponse(questionId, answerId);
+
+                if (result != null)
+                {
+                    PollItCacheRefresher.ClearCache(questionId);
+                }
             }
 
             return this.GetQuestion(questionId);
